@@ -71,6 +71,15 @@ namespace CropsHaatEcom_New.Controllers
 			ViewBag.PhoneNumber = Request.Cookies[key5];
 			ViewBag.District = Request.Cookies[key6];
 		}
+
+		public IActionResult Sandbox()
+		{
+
+			string URL = CityBankIPG.CityBankCreateOrder(12.00, "CHI20222211");
+
+			return Redirect(URL);
+
+		}
 		public IActionResult Index()
         {
 

@@ -22,8 +22,9 @@ namespace CropsHaatEcom_New
 
 
 
+				//var pfxPath = "D:\\DEVELOPMENT\\GITHUB\\CropsHaatEcom_New\\wwwroot\\13.250.70.239.pfx";
 				//var pfxPath = "~/13.250.70.239.pfx";
-				var pfxPath = "D:\\DEVELOPMENT\\Git\\cropshaatecom\\E-Commerce\\13.250.70.239.pfx";
+				var pfxPath = "https://cropshaat.com/13.250.70.239.pfx";
 
 
 
@@ -35,13 +36,13 @@ namespace CropsHaatEcom_New
 
 
 
-				X509Certificate2 cert = new X509Certificate2(Path.Combine(Directory.GetCurrentDirectory(), "13.250.70.239.pfx"), "02468");
+				X509Certificate2 cert = new X509Certificate2(pfxPath, "02468");
 
 				var certdata = cert.RawData;
 				//dbUpdater.UpdateCertData(certdata);
 
 
-				X509Certificate2 cert2 = new X509Certificate2(GetData.getCrtData());
+				//X509Certificate2 cert2 = new X509Certificate2(GetData.getCrtData());
 
 				//PostData.InsertApiResponder("CityBank", "debuger", cert.ToString());
 
