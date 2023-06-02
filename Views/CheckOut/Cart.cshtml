@@ -1,0 +1,202 @@
+﻿@model dynamic
+@{
+    ViewData["Title"] = "Cart";
+}
+
+
+		<div class="container margin_30">
+		<div class="page_header">
+			<div class="breadcrumbs">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">CheckOut</a></li>
+					<li>Cart</li>
+				</ul>
+			</div>
+			<h1>Cart page</h1>
+		</div>
+		<!-- /page_header -->
+		<table class="table table-striped cart-list">
+							<thead>
+								<tr>
+									<th>
+										<b>Product</b>
+									</th>
+									<th>
+										<b>Price</b>
+										
+									</th>
+									<th>
+										<b>Quantity</b>
+										
+									</th>
+									<th>
+										<b>Subtotal</b>
+										
+									</th>
+									<th>
+										
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								@if ( ViewBag.ItemCount<1)
+								{<tr>
+									<td colspan="4">
+										
+										<span >No Product in Cart</span>
+									</td>
+									</tr>
+									
+							
+								}
+
+								@foreach(Cart cart in Model.CartDetails){
+									<tr>
+									<td>
+										<div class="thumb_cart">
+											<img src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@cart.ProductId+Bowl.webp" class="lazy" alt="Image">
+										</div>
+										<span class="item_cart">@cart.ProductName</span>
+									</td>
+									<td>
+										<input type="hidden" id="@cart.ProductId Rate" value="@cart.Rate">
+										<strong  >৳ @cart.Rate</strong>
+									</td>
+									<td>
+
+										<input type="number" onchange="@(cart.ProductId+"Qtychanged")(this)" runat="server" value="@cart.Qty" id="@cart.ProductId Qty" name="@cart.ProductId Qty"class="form-control">
+										
+									</td>
+									<td>
+										<strong id="@cart.ProductId Subtotal"  runat="server">৳ @cart.Subtotal</strong>
+									</td>
+									<td class="options">
+										<a onclick="@(cart.ProductId+"Remove")(this)" type="button" class="btn_1 outline" href="@Url.Action("DeleteFromCart","CheckOut",new{id=@cart.ProductId})"><i class="ti-trash"></i></a>
+									</td>
+								</tr>
+								
+							 <script type="text/javascript">
+
+
+								 	function @(cart.ProductId+"Remove")() {
+										$.post(@Url.Action("DeleteFromCart","CheckOut",new{id=@cart.ProductId}))
+											.done(function(data){
+												
+											}).fail(function(e,f,g){
+											   console.log({e:e,f:f,g:g})
+										  });
+										
+										} 
+
+										
+							</script>
+									<script type="text/javascript">
+
+									
+									function @(cart.ProductId+"Qtychanged")(txt) {
+										var qty = document.getElementById('@cart.ProductId Qty').value;
+										
+										var Rate = document.getElementById('@cart.ProductId Rate').value;
+										document.getElementById('@cart.ProductId Subtotal').innerHTML ="৳ "+parseFloat(Rate) * parseFloat(qty)+".00";
+										
+									
+										@*$.ajax({
+											url: "@Url.Action("cart","Checkout")",
+											type: "POST", 
+											
+											data: "{id:@cart.ProductId,quantity:qty }",
+											success: function (mydata) {
+												//history.pushState('', 'checkout' + href, href); 
+											}
+										}); *@
+
+										$.post("@Url.Action("cart","Checkout",new{id=@cart.ProductId})?quantity="+qty)
+											.done(function(data){
+												
+											}).fail(function(e,f,g){
+											   console.log({e:e,f:f,g:g})
+										  });
+										location.reload();
+										} 
+										
+										</script>
+								
+								}
+								
+
+								
+								
+								@*<tr>
+									<td>
+										<div class="thumb_cart">
+											<img src="img/products/product_placeholder_square_small.jpg" data-src="img/products/shoes/3.jpg" class="lazy" alt="Image">
+										</div>
+										<span class="item_cart">Armor Air Wildwood ACG</span>
+									</td>
+									<td>
+										<strong>$90.00</strong>
+									</td>
+									
+									<td>
+										<div class="numbers-row">
+											<input type="text" value="1" id="quantity_3" class="qty2" name="quantity_3">
+										<div class="inc button_inc">+</div><div class="dec button_inc">-</div></div>
+									</td>
+									<td>
+										<strong>$90.00</strong>
+									</td>
+									<td class="options">
+										<a href="#"><i class="ti-trash"></i></a>
+									</td>
+								</tr>*@
+							</tbody>
+						</table>
+						<br/>
+						<div class="row add_top_30 flex-sm-row-reverse cart_actions">
+						<div class="col-sm-4 text-end">
+							<a asp-controller="Checkout" asp-action="Cart" class="btn_1 gray">Update Cart</a>
+							
+						</div>
+							<div class="col-sm-8">
+							<div class="apply-coupon">
+								<div class="form-group">
+									<div class="row g-2">
+										<div class="col-md-6"><input type="text" name="coupon-code" value="" placeholder="Promo code" class="form-control" disabled></div>
+										<div class="col-md-4"><button type="button" class="btn_1 outline" disabled>Apply Coupon</button></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /cart_actions -->
+	
+		</div>
+		<!-- /container -->
+		
+		<div class="box_cart">
+			<div class="container">
+			<div class="row justify-content-end">
+				<div class="col-xl-4 col-lg-4 col-md-6">
+			<ul>
+				<li>
+					<span>Subtotal</span> ৳ @ViewBag.Subtotal
+				</li>
+				<li>
+					<span>Total Weight</span> @ViewBag.TotalWeight KG
+				</li>
+				<li>
+					<span>Special Discount</span> ৳ 0.00
+				</li>
+				<li>
+					<span>Grand Total</span> ৳ @ViewBag.Grandtotal
+				</li>
+			</ul>
+			<a asp-controller="Checkout" asp-action="Checkout" class="btn_1 full-width cart">Proceed to Checkout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /box_cart -->
+

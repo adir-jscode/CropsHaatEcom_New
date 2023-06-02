@@ -1,149 +1,150 @@
-﻿@model dynamic
+﻿
+@model dynamic
 @{
-	ViewData["Title"] = "Home";
+    ViewData["Title"] = "Home";
 
 }
 
 
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-	<div class="carousel-indicators">
-		<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-
-		<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-		<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-		<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-		<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-		<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
-	</div>
-	<div class="carousel-inner">
-		<div class="carousel-item active" data-bs-interval="2000">
-			<img src="~/img/slides/Slider1.png" class="img-fluid" alt="...">
-
-		</div>
-		<div class="carousel-item" data-bs-interval="2000">
-			<img src="~/img/slides/Slider2.png" class="img-fluid" alt="...">
-
-		</div>
-
-		<div class="carousel-item" data-bs-interval="2000">
-			<img src="~/img/slides/Slider3.png" class="img-fluid" alt="...">
-
-		</div>
-		<div class="carousel-item" data-bs-interval="2000">
-			<img src="~/img/slides/Slider4.png" class="img-fluid" alt="...">
-
-		</div>
-		<div class="carousel-item" data-bs-interval="2000">
-			<img src="~/img/slides/Slider5.png" class="img-fluid" alt="...">
-
-		</div>
-		<div class="carousel-item" data-bs-interval="2000">
-			<img src="~/img/slides/Slider6.png" class="img-fluid" alt="...">
-
-		</div>
-
-	</div>
-	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		<span class="visually-hidden">Previous</span>
-	</button>
-	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-		<span class="carousel-control-next-icon" aria-hidden="true"></span>
-		<span class="visually-hidden">Next</span>
-	</button>
+ <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+	
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+	 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+	 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="2000">
+      <img src="~/img/slides/Slider1.png" class="img-fluid"alt="...">
+	 
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="~/img/slides/Slider2.png" class="img-fluid" alt="...">
+	    
+    </div>
+	
+	<div class="carousel-item" data-bs-interval="2000">
+      <img src="~/img/slides/Slider3.png" class="img-fluid" alt="...">
+	    
+    </div>
+	<div class="carousel-item" data-bs-interval="2000">
+      <img src="~/img/slides/Slider4.png" class="img-fluid" alt="...">
+	    
+    </div>
+	<div class="carousel-item" data-bs-interval="2000">
+      <img src="~/img/slides/Slider5.png" class="img-fluid" alt="...">
+	    
+    </div>
+	<div class="carousel-item" data-bs-interval="2000">
+      <img src="~/img/slides/Slider6.png" class="img-fluid" alt="...">
+	    
+    </div>
+    
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 
 </div><!--/carousel-->
 
-<ul id="banners_grid" class="clearfix">
-	<li>
-		<a href="#0" class="img_container">
-			<img src="../img/Food_Crops.png" alt="">
-			<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-				<h3>Food Crops</h3>
-
-			</div>
-		</a>
-	</li>
-	<li>
-		<a href="#0" class="img_container">
-			<img src="img/Cash_Crops.png" alt="">
-			<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-				<h3>Cash Crops</h3>
-
-			</div>
-		</a>
-	</li>
-	<li>
-		<a href="#0" class="img_container">
-			<img src="img/ProcessCrops.png" alt="">
-			<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-				<h3>Processed Crops</h3>
-
-			</div>
-		</a>
-	</li>
-</ul>
-<!--/banners_grid -->
-<!-- /container -->
-<div class="container margin_60_35">
-	<div class="main_title">
-		<h2>Top Selling</h2>
-		<span>Products</span>
-		<p>Products That You Guys Want  a Lot</p>
-	</div>
-	<div class="row small-gutters">
-		@foreach (ProductsModel products in Model.TopSellingProducts)
-		{
-
-
-			<div class="col-6 col-md-4 col-xl-3">
-				<div class="grid_item">
-					<figure>
-						<span class="ribbon off">- @products.DiscountRatio %</span>
-						<a href=~/products/details/@products.ProductId>
-							<img class="img-fluid lazy" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@products.ProductId+Bowl.webp" alt="@products.ProductName">
-							<img class="img-fluid lazy" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@products.ProductId+Bowl.webp" alt="@products.ProductName">
-
-						</a>
-						@*<div data-countdown="2023/05/15" class="countdown"></div>*@
-					</figure>
-
-					<!-- Review-->
-
-					<span class="rating">
-
-						@for (int i = 0; i < Convert.ToDecimal(@products.Rating); i++)
-						{
-							<i class="icon-star voted"></i>
-						}
-
-						@for (int i = 0; i < (5 - Convert.ToDecimal(@products.Rating)); i++)
-						{
-							<i class="icon-star"></i>
-						}
-
-
-
-					</span>
-					<!-- /Review-->
-
-					<a href=~/products/details/@products.ProductId>
-						<h3>@products.ProductName</h3>
-
-					</a>
-					<br>
-					<h9> Origin : @products.Origin @ViewBag.data</h9>
-					<div class="price_box">
-						<span class="new_price">৳ @products.HaatPrice</span>
-						<span class="old_price">৳ @products.MarketPrice</span>
+		<ul id="banners_grid" class="clearfix">
+			<li>
+				<a href="#0" class="img_container">
+					<img src="../img/Food_Crops.png" alt="">
+					<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+						<h3>Food Crops</h3>
+						
 					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#0" class="img_container">
+					<img src="img/Cash_Crops.png" alt="">
+					<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+						<h3>Cash Crops</h3>
+						
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#0" class="img_container">
+					<img src="img/ProcessCrops.png" alt="" >
+					<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+						<h3>Processed Crops</h3>
+					
+					</div>
+				</a>
+			</li>
+		</ul>
+		<!--/banners_grid -->
+		
+		<!-- /container -->
+		<div class="container margin_60_35">
+			<div class="main_title">
+				<h2>Top Selling</h2>
+				<span>Products</span>
+				<p>Products That You Guys Want  a Lot</p>
+			</div>
+			<div class="row small-gutters">
+				@foreach(ProductsModel products in Model.TopSellingProducts){
 
-					<ul>
-						@*<li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-					<li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-					*@
-						@if (products.IsAvailableStockl == "0")
-						{
+
+					 <div class="col-6 col-md-4 col-xl-3">
+					<div class="grid_item">
+						<figure>
+							<span class="ribbon off">- @products.DiscountRatio %</span>
+							<a href=~/products/details/@products.ProductId>
+								<img class="img-fluid lazy"  src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@products.ProductId+Bowl.webp" alt="@products.ProductName">
+								<img class="img-fluid lazy"  src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@products.ProductId+Bowl.webp" alt="@products.ProductName">
+								
+							</a>
+							@*<div data-countdown="2023/05/15" class="countdown"></div>*@
+						</figure>
+
+						 <!-- Review-->
+	                   
+							<span class="rating">
+							
+							@for(int i = 0; i < Convert.ToDecimal(@products.Rating); i++)
+							{
+								<i class="icon-star voted"></i>
+							}
+
+							 @for(int i = 0; i <(5- Convert.ToDecimal(@products.Rating)); i++)
+							{
+								<i class="icon-star"></i>
+							}
+								
+							
+							
+						</span>
+						 <!-- /Review-->
+						
+						<a href=~/products/details/@products.ProductId>
+							<h3>@products.ProductName</h3>
+							
+						</a>
+						<br>
+						<h9> Origin : @products.Origin @ViewBag.data</h9>
+						<div class="price_box">
+							<span class="new_price">৳ @products.HaatPrice</span>
+							<span class="old_price">৳ @products.MarketPrice</span>
+						</div>
+						
+						<ul>
+							@*<li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+							<li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+							*@
+						@if(products.IsAvailableStockl=="0")
+							{
 							<li>
 								<a href="@Url.Action("QuickCartAdd","Home",new{name=@products.ProductName,Qty=1,productID=@products.ProductId,rate=@products.HaatPrice,Weight=@products.SKUWeight,StockRequest=1})" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Request Stock Availability"><i class="ti-plus"></i><span>Request Stock Availability</span></a>
 							</li>
@@ -154,99 +155,98 @@
 								<a href="@Url.Action("QuickCartAdd","Home",new{name=@products.ProductName,Qty=1,productID=@products.ProductId,rate=@products.HaatPrice,Weight=@products.SKUWeight,StockRequest=0})" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a>
 							</li>
 						}
-
-					</ul>
+						
+						</ul>
+					</div>
+					<!-- /grid_item -->
 				</div>
-				<!-- /grid_item -->
+			 }
+
+
+			
+				
+			
 			</div>
-		}
+			<!-- /row -->
+		</div>
+		<!-- /container -->
 
-
-
-
-
-	</div>
-	<!-- /row -->
-</div>
-<!-- /container -->
-
-<div class="featured lazy" data-bg="url(img/HomeScrollerbg.png)">
-	<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-		<div class="container margin_60">
-			<div class="row justify-content-center justify-content-md-start">
-				<div class="col-lg-6 wow" data-wow-offset="150">
-					<h3>বাজার করুন এখন<br>বছর জুড়ে বাংলার হাট বাজারে</h3>
-
-					<div class="feat_text_block">
-
-						<a class="btn_1" href=~/products role="button">Shop Now</a>
+		<div class="featured lazy" data-bg="url(img/HomeScrollerbg.png)">
+			<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+				<div class="container margin_60">
+					<div class="row justify-content-center justify-content-md-start">
+						<div class="col-lg-6 wow" data-wow-offset="150">
+							<h3>বাজার করুন এখন<br>বছর জুড়ে বাংলার হাট বাজারে</h3>
+						
+							<div class="feat_text_block">
+								
+								<a class="btn_1" href=~/products role="button">Shop Now</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<!-- /featured -->
-
-<div class="container margin_60_35">
-	<div class="main_title">
-		<h2>Feature</h2>
-		<span>Products</span>
-		<p>Products That Are Best For You</p>
-	</div>
-	<div class="row small-gutters">
-		@foreach (ProductsModel products in Model.FeaturedProducts)
-		{
+		<!-- /featured -->
+		
+		<div class="container margin_60_35">
+			<div class="main_title">
+				<h2>Feature</h2>
+				<span>Products</span>
+				<p>Products That Are Best For You</p>
+			</div>
+			<div class="row small-gutters">
+				@foreach(ProductsModel products in Model.FeaturedProducts){
 
 
-			<div class="col-6 col-md-4 col-xl-3">
-				<div class="grid_item">
-					<figure>
-						<span class="ribbon off">- @products.DiscountRatio %</span>
+					 <div class="col-6 col-md-4 col-xl-3">
+					<div class="grid_item">
+						<figure>
+							<span class="ribbon off">- @products.DiscountRatio %</span>
+							<a href=~/products/details/@products.ProductId>
+								<img class="img-fluid"  src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@products.ProductId+Bowl.webp" alt="@products.ProductName">
+								<img class="img-fluid"  src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@products.ProductId+Bowl.webp" alt="@products.ProductName">
+								
+							</a>
+							@*<div data-countdown="2023/05/15" class="countdown"></div>*@
+						</figure>
+
+						 <!-- Review-->
+	                   
+							<span class="rating">
+							
+							@for(int i = 0; i < Convert.ToDecimal(@products.Rating); i++)
+							{
+								<i class="icon-star voted"></i>
+							}
+
+							 @for(int i = 0; i <(5- Convert.ToDecimal(@products.Rating)); i++)
+							{
+								<i class="icon-star"></i>
+							}
+								
+							
+							
+						</span>
+						 <!-- /Review-->
+						
 						<a href=~/products/details/@products.ProductId>
-							<img class="img-fluid" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@products.ProductId+Bowl.webp" alt="@products.ProductName">
-							<img class="img-fluid" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@products.ProductId+Bowl.webp" alt="@products.ProductName">
-
+							<h3>@products.ProductName</h3>
+							
 						</a>
-						@*<div data-countdown="2023/05/15" class="countdown"></div>*@
-					</figure>
-
-					<!-- Review-->
-
-					<span class="rating">
-
-						@for (int i = 0; i < Convert.ToDecimal(@products.Rating); i++)
-						{
-							<i class="icon-star voted"></i>
-						}
-
-						@for (int i = 0; i < (5 - Convert.ToDecimal(@products.Rating)); i++)
-						{
-							<i class="icon-star"></i>
-						}
-
-
-
-					</span>
-					<!-- /Review-->
-
-					<a href=~/products/details/@products.ProductId>
-						<h3>@products.ProductName</h3>
-
-					</a>
-					<br>
-					<h9> Origin : @products.Origin @ViewBag.data</h9>
-					<div class="price_box">
-						<span class="new_price">৳ @products.HaatPrice</span>
-						<span class="old_price">৳ @products.MarketPrice</span>
-					</div>
-
-					<ul>
-						@*<li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-					<li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-					*@
-						@if (products.IsAvailableStockl == "0")
-						{
+						<br>
+						<h9> Origin : @products.Origin @ViewBag.data</h9>
+						<div class="price_box">
+							<span class="new_price">৳ @products.HaatPrice</span>
+							<span class="old_price">৳ @products.MarketPrice</span>
+						</div>
+						
+						<ul>
+							@*<li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+							<li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+							*@
+						@if(products.IsAvailableStockl=="0")
+							{
 							<li>
 								<a href="@Url.Action("QuickCartAdd","Home",new{name=@products.ProductName,Qty=1,productID=@products.ProductId,rate=@products.HaatPrice,Weight=@products.SKUWeight,StockRequest=1})" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Request Stock Availability"><i class="ti-plus"></i><span>Request Stock Availability</span></a>
 							</li>
@@ -257,22 +257,23 @@
 								<a href="@Url.Action("QuickCartAdd","Home",new{name=@products.ProductName,Qty=1,productID=@products.ProductId,rate=@products.HaatPrice,Weight=@products.SKUWeight,StockRequest=0})" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a>
 							</li>
 						}
-
-					</ul>
+						
+						</ul>
+					</div>
+					<!-- /grid_item -->
 				</div>
-				<!-- /grid_item -->
+			 }
+
+
+			
+				
+			
 			</div>
-		}
-
-
-
-
-
-	</div>
-	<!-- /row -->
-</div>
-<!-- /container -->
-@*	<div class="bg_gray">
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+		
+	@*	<div class="bg_gray">
 			<div class="container margin_30">
 				<div id="brands" class="owl-carousel owl-theme">
 					<div class="item">
@@ -292,9 +293,11 @@
 					</div><!-- /item -->
 					<div class="item">
 						<a href="#0"><img src="img/brands/placeholder_brands.png" data-src="img/brands/logo_6.png" alt="" class="owl-lazy"></a>
-					</div><!-- /item -->
+					</div><!-- /item --> 
 				</div><!-- /carousel -->
 			</div><!-- /container -->
 		</div>*@
-<!-- /bg_gray -->
-<!-- /container -->
+		<!-- /bg_gray -->
+
+		
+		<!-- /container -->

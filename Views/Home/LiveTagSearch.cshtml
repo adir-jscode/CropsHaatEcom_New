@@ -1,0 +1,33 @@
+﻿@model List<ProductDetailsModel>
+@foreach (var Item in Model)
+{
+
+	<a href="~/products/details/@Item.ProductId" style="background-color:white" class="list-group-item list-group-item-action list-group-item-primary" aria-current="true">
+
+
+
+		<div class="media" >
+			@*<img class="mr-3 img-fluid" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@Item.ProductId+Bowl.webp" style="width:5%" alt="Generic placeholder image">*@
+			<div class="media-body ">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1">@Item.ProductName</h5>
+					<small>
+
+						<span class="old_price badge bg-danger rounded-pill">৳ @Item.MarketPrice</span>
+						<span class="badge bg-success rounded-pill">৳ @Item.HaatPrice</span>
+
+					</small>
+					
+				</div>
+				<small class="mb-1">@Item.ShortDetails</small>
+			</div>
+		</div>
+
+
+	</a>
+}
+
+
+
+
+

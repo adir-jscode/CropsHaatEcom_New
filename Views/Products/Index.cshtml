@@ -1,0 +1,443 @@
+﻿
+@model dynamic
+@{
+	if(ViewBag.SearchKey!="All Products"){
+		ViewData["Title"] = "Search: "+ @ViewBag.SearchKey;
+	}
+	else
+	{
+		ViewData["Title"] = "All Products";
+	}
+
+
+}
+
+<main>
+		<div class="top_banner">
+			<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
+				<div class="container">
+					<div class="breadcrumbs">
+						<ul>
+							<li><a href="~/">Home</a></li>
+							<li><a href="~/Products">All Products</a></li>
+							@{
+								if(ViewBag.SearchKey!="All Products"){
+									<li>Search: @ViewBag.SearchKey </li>
+								}
+							}
+							
+						</ul>
+					</div>
+					@{
+						if(ViewBag.SearchKey!="All Products"){
+							<h1>Search: @ViewBag.SearchKey</h1>
+						}
+						else
+						{
+							<h1>All Products</h1>
+						}
+					}
+					
+				</div>
+			</div>
+			<img src="~/img/LISTINGBG2.png" class="img-fluid" alt="">
+		</div>
+		<!-- /top_banner -->
+		
+			<div id="stick_here"></div>		
+			<div class="toolbox elemento_stick">
+				<div class="container">
+				<ul class="clearfix">
+					<li>
+						<div class="sort_select">
+							<select name="sort" id="sort">
+                                    <option value="popularity" selected="selected">Sort by popularity</option>
+                                    <option value="rating">Sort by average rating</option>
+                                    <option value="date">Sort by newness</option>
+                                    <option value="price">Sort by price: low to high</option>
+                                    
+							</select>
+						</div>
+					</li>
+					<li>
+						<a href="#0"><i class="ti-view-grid"></i></a>
+						<a href="listing-row-1-sidebar-left.html"><i class="ti-view-list"></i></a>
+					</li>
+					<li>
+						@*<a data-bs-toggle="collapse" href="#filters" role="button" aria-expanded="false" aria-controls="filters">
+							<i class="ti-filter"></i><span>Filters</span>
+						</a>*@
+					</li>
+				</ul>
+				<div class="collapse" id="filters"><div class="row small-gutters filters_listing_1">
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="dropdown">
+						<a href="#" data-bs-toggle="dropdown" class="drop">Categories</a>
+						<div class="dropdown-menu">
+							<div class="filter_type">
+									<ul>
+										<li>
+											<label class="container_check">Men <small>12</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">Women <small>24</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">Running <small>23</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">Training <small>11</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+									</ul>
+									<a href="#0" class="apply_filter">Apply</a>
+								</div>
+						</div>
+					</div>
+					<!-- /dropdown -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="dropdown">
+						<a href="#" data-bs-toggle="dropdown" class="drop">Color</a>
+						<div class="dropdown-menu">
+							<div class="filter_type">
+									<ul>
+										<li>
+											<label class="container_check">Blue <small>06</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">Red <small>12</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">Orange <small>17</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">Black <small>43</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+									</ul>
+									<a href="#0" class="apply_filter">Apply</a>
+								</div>
+						</div>
+					</div>
+					<!-- /dropdown -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="dropdown">
+						<a href="#" data-bs-toggle="dropdown" class="drop">Brand</a>
+						<div class="dropdown-menu">
+							<div class="filter_type">
+									<ul>
+										<li>
+											<label class="container_check">Adidas <small>11</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">Nike <small>08</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">Vans <small>05</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">Puma <small>18</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+									</ul>
+									<a href="#0" class="apply_filter">Apply</a>
+								</div>
+						</div>
+					</div>
+					<!-- /dropdown -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="dropdown">
+						<a href="#" data-bs-toggle="dropdown" class="drop">Price</a>
+						<div class="dropdown-menu">
+							<div class="filter_type">
+									<ul>
+										<li>
+											<label class="container_check">$0 — $50<small>11</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">$50 — $100<small>08</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">$100 — $150<small>05</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+										<li>
+											<label class="container_check">$150 — $200<small>18</small>
+											  <input type="checkbox">
+											  <span class="checkmark"></span>
+											</label>
+										</li>
+									</ul>
+									<a href="#0" class="apply_filter">Apply</a>
+								</div>
+						</div>
+					</div>
+					<!-- /dropdown -->
+			
+				</div></div></div>
+				</div>
+			</div>
+			<!-- /toolbox -->
+
+			<div class="container margin_30">
+			<div class="row small-gutters">
+
+			@foreach(ProductDetailsModel products in Model.Products)
+			{
+				<!-- col -->	
+				<div class="col-6 col-md-4 col-xl-3">
+					<div class="grid_item">
+						<figure>
+							<span class="ribbon off">- @products.DiscountRatio %</span>
+							<a href=~/products/details/@products.ProductId>
+								<img class="img-fluid lazy" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@products.ProductId+Bowl.webp" alt="">
+								<img class="img-fluid lazy" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@products.ProductId+Bowl.webp" alt="">
+							</a>
+							@*<div data-countdown="2023/05/15" class="countdown"></div>*@
+						</figure>
+
+
+						 <span class="rating">
+							@for(int i = 0; i < Convert.ToDecimal(@products.ReviewRating); i++)
+							{
+								<i class="icon-star voted"></i>
+							}
+
+							 @for(int i = 0; i <(5- Convert.ToDecimal(@products.ReviewRating)); i++)
+							{
+								<i class="icon-star"></i>
+							}
+						</span>
+
+						<a href=~/products/details/@products.ProductId>
+							<h3>@products.ProductName</h3>
+							
+						</a>
+						<br>
+						<h9> Origin : @products.Origin</h9>
+						<div class="price_box">
+							<span class="new_price">৳ @products.HaatPrice</span>
+							<span class="old_price">৳ @products.MarketPrice</span>
+						</div>
+						<ul>
+						@if(products.IsAvailableStockl=="0")
+							{
+								<li>
+								<a href="@Url.Action("QuickCartAdd","products",new{name=@products.ProductName,Qty=1,productID=@products.ProductId,rate=@products.HaatPrice,Weight=@products.SKUWeight,StockRequest=1,SearchKey=@ViewBag.SearchKey,page=@ViewBag.CurrentPage})"   class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Request Stock Availability"><i class="ti-plus"></i><span>Request Stock Availability</span></a>
+							</li>
+						}
+						else
+						{
+							<li>
+								<a href="@Url.Action("QuickCartAdd","products",new{name=@products.ProductName,Qty=1,productID=@products.ProductId,rate=@products.HaatPrice,Weight=@products.SKUWeight,StockRequest=0,SearchKey=@ViewBag.SearchKey,page=@ViewBag.CurrentPage})"  class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a>
+							</li>
+						}
+
+						</ul>
+					</div>
+					<!-- /grid_item -->
+				</div>
+			<!-- /col -->
+			}
+
+			
+				
+
+
+			</div>
+			<!-- /row -->
+				
+			<div class="pagination__wrapper d-flex justify-content-center">
+				<ul class="pagination">
+
+				@{
+					if (ViewBag.CurrentPage > 1)
+					{
+						<li><a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page=ViewBag.CurrentPage-1})" class="prev" title="previous page">&#10094;</a></li>
+
+					}
+
+
+					if (ViewBag.CurrentPage > ViewBag.TotalPages - 3)
+					{
+
+						if (ViewBag.TotalPages - 3 > 0)
+						{
+									if(ViewBag.CurrentPage== (ViewBag.TotalPages-3))
+								{
+									<li>
+										<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page= ViewBag.TotalPages - 3})" class="active"><b> @(ViewBag.TotalPages - 3)</b></a>
+									</li>
+								}
+								else
+								{
+									<li>
+										<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page= ViewBag.TotalPages - 3})"> @(ViewBag.TotalPages - 3)</a>
+								</li>
+							}
+						}
+
+						if(ViewBag.TotalPages - 2 > 0)
+						{
+							if(ViewBag.CurrentPage== (ViewBag.TotalPages - 2))
+									{
+										<li>
+											<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page= ViewBag.TotalPages - 2})" class="active"><b> @(ViewBag.TotalPages - 2)</b></a>
+										</li>
+									}else
+									{
+										<li>
+											<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page= ViewBag.TotalPages - 2})"> @(ViewBag.TotalPages - 2)</a>
+								</li>
+							}
+						}
+
+						if(ViewBag.TotalPages - 1 > 0)
+						{
+							if(ViewBag.CurrentPage== (ViewBag.TotalPages - 1))
+									{
+										<li>
+											<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page= ViewBag.TotalPages - 1})" class="active"><b> @(ViewBag.TotalPages-1)</b></a>
+										</li>
+									}else
+						{
+							<li>
+								<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page= ViewBag.TotalPages - 1})"> @(ViewBag.TotalPages-1)</a>
+							</li>
+						}
+						}
+
+						
+							if(ViewBag.TotalPages > 0){
+								if(ViewBag.CurrentPage== ViewBag.TotalPages )
+									{
+										<li>
+											<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page= ViewBag.TotalPages})" class="active"><b> @ViewBag.TotalPages</b></a>
+										</li>
+									}else
+									{
+										<li>
+											<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page= ViewBag.TotalPages})">@ViewBag.TotalPages</a>
+										</li>
+									}
+
+							}
+									
+									
+									
+
+
+						//for(int i = @ViewBag.TotalPagesFlag-3; i <= @ViewBag.TotalPages; i++)
+						//						{
+
+						//									if(i== ViewBag.CurrentPage)
+						//									{
+						//										<li>
+						//											<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page=i})" class="active"><b>@i</b></a>
+						//										</li>
+						//									}
+						//									else
+						//									{
+						//										<li>
+						//												<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page=i})">@i</a>
+						//							</li>
+						//							}
+	
+						//					}
+					}
+					else
+					{
+							for(int i = ViewBag.CurrentPage; i <= ViewBag.CurrentPage+3; i++)
+												{
+
+															if(i== ViewBag.CurrentPage)
+															{
+																<li>
+																	<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page=i})" class="active"><b>@i</b></a>
+																</li>
+															}
+															else
+															{
+																<li>
+																		<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page=i})">@i</a>
+													</li>
+													}
+	
+											}
+					}
+
+					
+							
+				if (ViewBag.CurrentPage < ViewBag.TotalPages - 3)
+						{
+							<li>
+												<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page=ViewBag.CurrentPage+1})">......</a>
+							</li>
+							<li>
+												<a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page=ViewBag.TotalPages})">@ViewBag.TotalPages</a>
+						</li>
+					}
+
+
+					if (ViewBag.CurrentPage != ViewBag.TotalPages)
+					{
+						if(ViewBag.TotalPages > 0)
+						{
+							<li><a href="@Url.Action("index","Products",new{SearchKey=ViewBag.SearchKey,page=ViewBag.CurrentPage+1})" class="next" title="next page">&#10095;</a></li>
+					
+						}
+						
+					}
+
+					}
+				</ul>
+				
+			</div>
+				
+		</div>
+		<!-- /container -->
+		</main>
