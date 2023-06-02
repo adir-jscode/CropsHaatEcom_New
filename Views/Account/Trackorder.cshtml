@@ -1,0 +1,292 @@
+﻿@using CropsHaatEcom_New.Models
+@model dynamic
+@{
+    ViewData["Title"] = "Track Order";
+}
+
+ <div class="content-wrapper">
+	  <div class="container-xxl flex-grow-1 container-p-y">
+
+		  	<div id="track_order">
+			<div class="container">
+				<div class="row justify-content-center text-center">
+					<div class="col-xl-7 col-lg-9">
+						<img src="~/img/TrackingIcon.png" alt="" class="img-fluid add_bottom_15" width="200" height="177">
+						<p>Quick Tracking Order</p>
+
+
+				<form role="form" method="post" >
+					<input type="text" name="InvID" class="form-control" placeholder="Enter Your Order ID" required> <br/>
+					<input type="submit"  asp-controller="Account" asp-action="Trackorder2" class="btn_1 full-width" value="Search">
+				</form>
+						
+
+
+						 <script type = "text/javascript">
+							
+								function Redirect() {
+								   window.location = "/Account/Trackorder/"+document.getElementById("InvID").value;
+								}
+							 
+						  </script>
+					</div>
+
+
+					
+				</div>
+				<!-- /row -->
+			</div>
+           <!-- Taccking Details -->
+			
+			<!-- /container -->
+		</div>
+		<!-- /track_order -->
+		<div class="container">
+				<div class="row justify-content-center">
+					<div class="card">
+				@if(ViewBag.TrackingDataAvailable > 0)
+					{
+						<br/>
+						<h4 class="text-center">Order Tracking Details</h4>
+						 <h5 class="card-header">Timeline</h5>
+					}
+               
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+							@foreach(OrderTrackingModel OrderTrackingDetails in Model.OrderTrackingDetails)
+							{
+								if(OrderTrackingDetails.OrderStatus=="Order Placed")
+								{
+									<tr>
+										<th>
+											<img src="~/assets/img/icons/OrderPlaced.gif" width=30px />
+											<strong> &nbsp;Your Order Has Been Placed</strong><br/>
+											<small>&nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp; &nbsp; @OrderTrackingDetails.DateTime </small>
+										</th>
+									</tr>
+								}
+								if(OrderTrackingDetails.OrderStatus=="Order Confirmed")
+								{
+									<tr>
+										<th>
+											<img src="~/assets/img/icons/OrderConfirmed.gif" width=30px />
+											<strong> &nbsp;You have Confirmed Your Order</strong><br/>
+											<small>&nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp; &nbsp; @OrderTrackingDetails.DateTime </small>
+										</th>
+									</tr>
+								}
+
+								if(OrderTrackingDetails.OrderStatus=="In Transit")
+								{
+									<tr>
+										<th>
+											<img src="~/assets/img/icons/OrderIntransit.gif" width=30px />
+											<strong> &nbsp;Your Order is in transit</strong><br/>
+											<small>&nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp; &nbsp; @OrderTrackingDetails.DateTime </small>
+										</th>
+									</tr>
+								}
+								if(OrderTrackingDetails.OrderStatus=="Delivered")
+								{
+									<tr>
+										<th>
+											<img src="~/assets/img/icons/OrderDelivered.gif" width=30px />
+											<strong> &nbsp;Your Order has been delivered</strong><br/>
+											<small>&nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp; &nbsp; @OrderTrackingDetails.DateTime </small>
+										</th>
+									</tr>
+								}
+							}
+							
+                    </thead>
+                  </table>
+                </div>
+              </div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /tbal-->
+			<br/>
+			<br/>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="card">
+				@if(ViewBag.TrackingDataAvailable > 0)
+					{
+						<br/>
+						
+						 <h5 class="card-header">Billing Address</h5>
+
+						 <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+
+
+						<tr><th><b>Name:</b> @ViewBag.UserFullName</th></tr>
+						<tr><th><b>Full Address:</b> @ViewBag.FullAddress</th></tr>
+						<tr><th><b>Area:</b> @ViewBag.Area</th></tr>
+						<tr><th><b>District:</b> @ViewBag.District</th></tr>
+						<tr><th><b>Phone Number:</b> @ViewBag.PhoneNumber</th></tr>
+							
+                    </thead>
+                  </table>
+                </div>
+					}
+               
+                
+              </div>
+				</div>
+				<!-- /row -->
+			
+
+	  </div>
+	  <!-- /Tbal-->
+
+
+	  <!-- /bal-->
+		
+			<br/>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="card">
+				@if(ViewBag.TrackingDataAvailable > 0)
+					{
+						<br/>
+						
+						 <h5 class="card-header">Shipping Address</h5>
+
+						 <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+						@foreach(OrderssModel orderssModel in Model.ShippingAddress){
+							<tr><th><b>Name:</b> @orderssModel.ShippingAddrName</th></tr>
+							<tr><th><b>Full Address:</b> @orderssModel.ShippingAddrAddress</th></tr>
+							<tr><th><b>Area:</b> @orderssModel.ShippingAddrArea</th></tr>
+							<tr><th><b>District:</b> @orderssModel.ShippingAddrDis</th></tr>
+							<tr><th><b>Phone Number:</b> @orderssModel.ShippingAddrPhnNum</th></tr>
+						}
+						
+							
+                    </thead>
+                  </table>
+                </div>
+					}
+               
+                
+              </div>
+				</div>
+				<!-- /row -->
+			
+
+	  </div>
+	  <!-- /Tbal-->
+
+	  <!-- /bal-->
+		
+			<br/>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="card">
+				@if(ViewBag.TrackingDataAvailable > 0)
+					{
+						<br/>
+						
+						 <h5 class="card-header">Order Details</h5>
+
+						 <h6 class="card-header">
+							 <b>Order Date Time:</b> @ViewBag.Date <br /><br />
+							 <b>ID: </b>@ViewBag.ID <br /><br />
+							 <b>Status: </b>@if(ViewBag.Status=="Order Placed")
+								{
+									<span class="badge bg-label-primary">Order Placed</span>
+								}
+								@if(ViewBag.Status=="Order Confirmed")
+								{
+									<span class="badge bg-label-secondary">Order Confirmed</span>
+								}
+
+								@if(ViewBag.Status=="In Transit")
+								{
+									<span class="badge bg-label-info">In Transit</span>
+								}
+								@if(ViewBag.Status=="success")
+								{
+									<span class="badge bg-label-primary">Delivered</span>
+								}
+							 
+						 </h6> <br />
+
+
+						 <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead class="table-light fw-bold">
+                      <tr >
+                        <th class="fw-bold">Product Name</th>
+                        <th class="fw-bold">Rate</th>
+                        <th class="fw-bold">Qty</th>
+                        <th class="fw-bold">SubTotal</th>
+                       
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      
+                         @foreach(ShortOrderDetails orderss in Model.OrderDetails){
+                            <tr>
+                             <td>@orderss.ProductName</td>
+                             <td>৳ @orderss.Rate</td>
+                             <td>@orderss.Qty</td>
+                            <td>৳ @orderss.SubTotal</td>
+                           
+                         </tr>
+                        }
+                     <tr>
+						 <td colspan="3" class="text-end fw-bold">SubTotal</td>
+                             <td>৳ @ViewBag.Subtotal</td>
+					 </tr>
+					  <tr>
+						 <td colspan="3" class="text-end fw-bold">Shipping Method</td>
+                             <td>@ViewBag.ShippingMethod</td>
+					 </tr>
+					  <tr>
+						 <td colspan="3" class="text-end fw-bold">Total Weight</td>
+                             <td>@ViewBag.TotalWeight KG</td>
+					 </tr>
+
+					 <tr>
+						 <td colspan="3" class="text-end fw-bold">Shipping Charge</td>
+                             <td>৳ @ViewBag.ShippingCharge</td>
+					 </tr>
+
+					  <tr>
+						 <td colspan="3" class="text-end fw-bold">Grand Total</td>
+                             <td class="fw-bold">৳ @ViewBag.GrandTotal</td>
+					 </tr>
+					 <tr>
+						 <td colspan="3" class="text-end fw-bold">Payment Mode</td>
+                             <td>@ViewBag.PaymentMode</td>
+					 </tr>
+					  <tr>
+						 <td colspan="3" class="text-end fw-bold">Paid Amount</td>
+                             <td>৳ @ViewBag.PaidAmoint</td>
+					 </tr>
+                     
+                    </tbody>
+                  </table>
+                </div>
+					}
+               
+                
+              </div>
+				</div>
+				<!-- /row -->
+			
+
+	  </div>
+	  <!-- /Tbal-->
+
+ </div>
+	
+
+
+		

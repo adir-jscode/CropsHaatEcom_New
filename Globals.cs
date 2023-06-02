@@ -124,7 +124,6 @@ namespace CropsHaatEcom_New
         public static string UserID()
         {
 
-
             return DateTime.UtcNow.ToString("ddMMyyyyHHmmssFFFFF"); 
 
         }
@@ -614,8 +613,7 @@ namespace CropsHaatEcom_New
            "&msisdn=" + msisdn + "&sms=" + System.Web.HttpUtility.UrlEncode(sms) +
            "&csms_id=" + csms_id + "&sid=" + sid;
              
-              HttpWebRequest request = (HttpWebRequest)WebRequest.Create(sms_url +
-             myParameters);
+              HttpWebRequest request = (HttpWebRequest)WebRequest.Create(sms_url + myParameters);
             request.AutomaticDecompression = DecompressionMethods.GZip;
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())
@@ -1068,6 +1066,7 @@ namespace CropsHaatEcom_New
                     DataSet ds = new DataSet();
                     da.Fill(ds, "DataTable1");
                     con.Close();
+
 
                     DataTable dt = ds.Tables["DataTable1"];
 

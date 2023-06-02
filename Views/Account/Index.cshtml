@@ -1,0 +1,319 @@
+﻿
+@{
+    ViewData["Title"] = "Account";
+}
+
+
+		
+	<div class="container margin_30">
+		<div class="page_header">
+			<div class="breadcrumbs">
+				<ul>
+					<li><a href="#">Home</a></li>
+					
+					<li>Account</li>
+				</ul>
+		</div>
+		
+	</div>
+	<!-- /page_header -->
+			<div class="row justify-content-center">
+			<div class="col-xl-6 col-lg-6 col-md-8">
+				<div class="box_account">
+				@{
+					if(ViewBag.UserID==null){
+						<h3 class="client">Already Client</h3>
+						<form role="form" method="post">
+
+							<div class="form_container">
+								@*<div class="row no-gutters">
+									<div class="col-lg-6 pr-lg-1">
+									<a href="#0" class="social_bt facebook">Login with Facebook</a>
+									</div>
+									<div class="col-lg-6 pl-lg-1">
+									<a href="#0" class="social_bt google">Login with Google</a>
+									</div>
+									</div>
+									<div class="divider"><span>Or</span></div>*@
+								<div class="form-group">
+									<input type="text" class="form-control" name="PhoneNumber" id="email" placeholder="Phone Number*" pattern="[0-9]{11}" title="01********"required>
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control" name="Password" id="password_in" value="" placeholder="Password*" required>
+								</div>
+								<div class="clearfix add_bottom_15">
+
+									@*<div class="float-end"><a id="forgot" href="javascript:void(0);">Lost Password?</a></div>*@
+								</div>
+								<div class="text-center"><input type="submit"  asp-controller="Account" asp-action="LoginValidate" value="Log In" class="btn_1 full-width"></div>
+
+							</div>
+
+						</form>
+					}
+					else
+					{				<h5>Welcome to Crops Haat!</h5>	
+							<div class="container-fluid">
+								<div class="row d-flex justify-content-center align-items-center h-100">
+									
+									<div class="card" style="border-radius: .5rem;">
+										<div class="row g-0">
+										<div class="col-md-4 gradient-custom text-center text-white" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+											<img
+											src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+											alt="Avatar"
+											class="img-fluid my-5"
+											style="width: 80px;"
+											/>
+											<h5>ID: @ViewBag.UserID</h5>
+											
+											<a class="btn btn-outline-danger" asp-controller="Account" asp-action="Logout" ><i class="fas fa-sign-out fa-lg me-3"></i>Log Out</a>
+										</div>
+										<div class="col-md-8">
+											<div class="card-body p-4">
+											<h6>Information</h6>
+											<hr class="mt-0 mb-4">
+											<div class="row pt-1">
+												<div class="col-6 mb-3">
+												<h6>Full Name</h6>
+												<p class="text-muted">@ViewBag.UserFullName</p>
+												</div>
+												<div class="col-6 mb-3">
+												<h6>Phone</h6>
+												<p class="text-muted">@ViewBag.PhoneNumber</p>
+												</div>
+											</div>
+											<h6>Address</h6>
+											<hr class="mt-0 mb-4">
+											<div class="row pt-1">
+												<div class="col-6 mb-3">
+												<h6>Full Address</h6>
+												<p class="text-muted">@ViewBag.FullAddress</p>
+												</div>
+												<div class="col-6 mb-3">
+												<h6>District</h6>
+												<p class="text-muted">@ViewBag.District</p>
+												</div>
+												<div class="col-6 mb-3">
+												<h6>Area</h6>
+												<p class="text-muted">@ViewBag.Area</p>
+												</div>
+											</div>
+											<div class="d-flex justify-content-start">
+												<a asp-controller="Account" asp-action="Logout" ><i class="fa-regular fa-pen-to-square fa-lg me-3"></i>Edit Profile</a>
+											
+											</div>
+											</div>
+										</div>
+										</div>
+									
+									</div>
+								</div>
+
+							</div>
+							
+					
+					
+						<!-- /form_container -->
+
+
+
+
+
+
+
+
+
+					}
+				}
+
+
+				<!-- /form_container -->
+			</div>
+			<!-- /box_account -->
+
+			@{
+				if (ViewBag.UserID == null)
+				{
+					<div class="box_account">
+					<h3 class="client">Forgot Password</h3>
+					<form role="form" method="post">
+						<div class="form_container">
+						@*<div class="row no-gutters">
+							<div class="col-lg-6 pr-lg-1">
+								<a href="#0" class="social_bt facebook">Login with Facebook</a>
+							</div>
+							<div class="col-lg-6 pl-lg-1">
+								<a href="#0" class="social_bt google">Login with Google</a>
+							</div>
+						</div>
+						<div class="divider"><span>Or</span></div>*@
+						<div class="form-group">
+							<input type="text" class="form-control" name="PhoneNumber" id="PhoneNumber" placeholder="Phone Number*" pattern="[0-9]{11}" title="01********" required>
+						</div>
+						
+						<div class="clearfix add_bottom_15">
+							
+							@*<div class="float-end"><a id="forgot" href="javascript:void(0);">Lost Password?</a></div>*@
+						</div>
+						<div class="text-center"><input type="submit" asp-controller="Account" asp-action="RetrivePassword" value="Get My Password" class="btn_1 full-width"></div>
+						
+					</div>
+					</form>
+					
+					<!-- /form_container -->
+				</div>
+				<!-- /box_account -->
+				}
+			}
+				
+				<!-- /row -->
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-8">
+			@{
+				if (ViewBag.UserID == null)
+				{
+					<div class="box_account">
+					<h3 class="new_client">New Client</h3> <small class="float-right pt-2">* Required Fields</small>
+					<form role="form" method="post">
+						<div class="form_container">
+						<div class="form-group">
+							<label>Full Name</label>
+							<input type="text"  class="form-control" name="FullName" id="email_2" placeholder="Full name*" required >
+						</div>
+						<div class="form-group">
+							<label>Full Address</label>
+							<input type="text" class="form-control" name="FullAddress" id="email_2" placeholder="Full Address*" required>
+						</div>
+						<div class="form-group">
+							<label>Phone Number</label>
+							<input type="text" class="form-control" name="PhoneNumber" id="email_2" placeholder="Phone Number*" pattern="[0-9]{11}" title="01********" required>
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<input type="password" class="form-control" name="Password" id="password_in_2" value="" placeholder="Password*" required>
+						</div>
+						<hr>
+						
+						<div class="private box">
+							
+							
+							
+							<div class="row no-gutters">
+								
+									<div class=" col-6 form-group pl-1">
+										<label>District</label>
+										<select class="form-select" name="District" onclick="this.size=10;" 
+										onmouseover="this.size=10;" tabindex="0" onmouseout="this.size=1;" 
+										style="max-height: 160px; overflow: auto;" required>
+											
+											<option value="Bagerhat">Bagerhat</option>
+											<option value="Bandarban">Bandarban</option>
+											<option value="Barguna">Barguna</option>
+											<option value="Barisal">Barisal</option>
+											<option value="Bhola">Bhola</option>
+											<option value="Bogra">Bogra</option>
+											<option value="Brahmanbaria">Brahmanbaria</option>
+											<option value="Chandpur">Chandpur</option>
+											<option value="Chapai Nawabganj">Chapai Nawabganj</option>
+											<option value="Chittagong">Chittagong</option>
+											<option value="Chuadanga">Chuadanga</option>
+											<option value="Comilla">Comilla</option>
+											<option value="Cox's Bazar">Cox's Bazar</option>
+											<option value="Dhaka">Dhaka</option>
+											<option value="Dinajpur">Dinajpur</option>
+											<option value="Faridpur">Faridpur</option>
+											<option value="Feni">Feni</option>
+											<option value="Gaibandha">Gaibandha</option>
+											<option value="Gazipur">Gazipur</option>
+											<option value="Gopalganj">Gopalganj</option>
+											<option value="Habiganj">Habiganj</option>
+											<option value="Jamalpur">Jamalpur</option>
+											<option value="Jessore">Jessore</option>
+											<option value="Jhalokathi">Jhalokathi</option>
+											<option value="Jhenaidah">Jhenaidah</option>
+											<option value="Joypurhat">Joypurhat</option>
+											<option value="Khagrachari">Khagrachari</option>
+											<option value="Khulna">Khulna</option>
+											<option value="Kishoreganj">Kishoreganj</option>
+											<option value="Kurigram">Kurigram</option>
+											<option value="Kushtia">Kushtia</option>
+											<option value="Laksmipur">Laksmipur</option>
+											<option value="Lalmonirhat">Lalmonirhat</option>
+											<option value="Madaripur">Madaripur</option>
+											<option value="Magura">Magura</option>
+											<option value="Manikganj">Manikganj</option>
+											<option value="Meherpur">Meherpur</option>
+											<option value="Moulvibazar">Moulvibazar</option>
+											<option value="Munshiganj">Munshiganj</option>
+											<option value="Mymensingh">Mymensingh</option>
+											<option value="Naogaon">Naogaon</option>
+											<option value="Narail">Narail</option>
+											<option value="Narayanganj">Narayanganj</option>
+											<option value="Natore">Natore</option>
+											<option value="Netrokona">Netrokona</option>
+											<option value="Nilphamari">Nilphamari</option>
+											<option value="Noakhali">Noakhali</option>
+											<option value="Norshingdi">Norshingdi</option>
+											<option value="Pabna">Pabna</option>
+											<option value="Panchagarh">Panchagarh</option>
+											<option value="Patuakhali">Patuakhali</option>
+											<option value="Perojpur">Perojpur</option>
+											<option value="Rajbari">Rajbari</option>
+											<option value="Rajshahi">Rajshahi</option>
+											<option value="Rangamati">Rangamati</option>
+											<option value="Rangpur">Rangpur</option>
+											<option value="Satkhira">Satkhira</option>
+											<option value="Shariatpur">Shariatpur</option>
+											<option value="Sherpur">Sherpur</option>
+											<option value="Sirajganj">Sirajganj</option>
+											<option value="Sunamganj">Sunamganj</option>
+											<option value="Sylhet">Sylhet</option>
+											<option value="Tangail">Tangail</option>
+											<option value="Thakurgaon">Thakurgaon</option>
+
+
+										</select>
+									</div>
+									
+									
+								<div class="col-6 pl-1">
+									<div class="form-group">
+										<label>Area</label>
+										<input type="text" name="Area"class="form-control" placeholder="Area *">
+									</div>
+								</div>
+							</div>
+							<!-- /row -->
+							
+						</div>
+						<!-- /private -->
+						
+						<!-- /company -->
+						<hr>
+						<div class="form-group">
+							<label class="container_check">Accept <a  asp-controller="Home" asp-action="TermsAndConditions">Terms and conditions</a>
+							
+							<input type="checkbox"  required>
+								<span class="checkmark"></span>	
+							</label>
+						</div>
+						<div class="text-center">
+							<input type="submit" value="Register" asp-controller="Account" asp-action="RegesterNewUser" class="btn_1 full-width">
+						</div>
+					</div>
+					</form>
+					
+					<!-- /form_container -->
+				</div>
+				}
+			}
+				
+				<!-- /box_account -->
+			</div>
+		</div>
+		<!-- /row -->
+		</div>
+		<!-- /container -->
+
+
