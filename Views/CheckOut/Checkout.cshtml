@@ -1,0 +1,328 @@
+﻿@model dynamic
+@{
+    ViewData["Title"] = "Checkout";
+}
+<div class="container margin_30">
+		<div class="page_header">
+			<div class="breadcrumbs">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Cart</a></li>
+					<li>CheckOut</li>
+				</ul>
+		</div>
+		<h1>Check Out</h1>
+			
+	</div>
+	<!-- /page_header -->
+	<form role="form" method="post">
+			<div class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="step first">
+						<h3>1. Billing and Shipping address</h3>
+				
+					<div class="tab-content checkout">
+						<div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
+							<h6>Billing Address</h6>
+							<div class="form-group">
+								<label>Full Name</label>
+								<input type="email" class="form-control" placeholder="Full Name" value="@ViewBag.UserFullName" disabled>
+							</div>
+							<div class="form-group">
+								<label>Phone Number</label>
+								<input type="text" class="form-control" placeholder="Phone Number" value="@ViewBag.PhoneNumber" disabled>
+							</div>
+							<hr>
+							
+							<!-- /row -->
+							<div class="form-group">
+								<label>Full Adress</label>
+								<input type="text" class="form-control" placeholder="Full Address" value="@ViewBag.FullAddress" disabled>
+							</div>
+							<div class="row no-gutters">
+								 <div class="col-6 form-group pl-1">
+									<label>Disctrict</label>
+									<input type="text" class="form-control" placeholder="Disctrict" value="@ViewBag.District" disabled >
+								</div>
+								<div class="col-6 form-group pl-1">
+									<label>Area</label>
+									<input type="text" class="form-control" placeholder="Area" value="@ViewBag.Area" disabled>
+								</div>
+							</div>
+							<!-- /row -->
+							
+							<!-- /row -->
+							
+							<hr>
+							<h6>Shipping Address</h6>
+							<div class="form-group">
+								<label class="container_check" id="other_addr">Ship to Other Address
+								 
+								   <input type="checkbox" onload="validate()"  onclick="validate()" onchange="validate()" id="ShippingAddress"  >
+								  <span class="checkmark"></span>
+								</label>
+							</div>
+							<div id="other_addr_c" class="pt-2">
+							<div class="form-group">
+								<label>Full Name</label>
+								<input type="text" id="ShippingFullName" name="ShippingFullName"  class="form-control" placeholder="Full Name" >
+							</div>
+							<!-- /row -->
+							<div class="form-group">
+								<label>Phone Number</label>
+								<input type="text" class="form-control" id="ShippingPhoneNumber"  name="ShippingPhoneNumber" placeholder="Phone Number"  pattern="[0-9]{11}" title="01********">
+							</div>
+							<!-- /row -->
+							<div class="form-group">
+								<label>Full Address</label>
+								<input type="text" class="form-control" id="ShippingFullAddress" name="ShippingFullAddress" placeholder="Full Address">
+							</div>
+							<div class="row no-gutters">
+								<form  class=" col-6 form-group pl-1" id="form1" runat="server">
+									<div >
+										<label>District</label>
+										<select class="form-select"  name="ShippingDistrict" id="ShippingDistrict"  onclick="this.size=10;" onmouseover="this.size=10;" tabindex="0" onmouseout="this.size=1;" style="max-height: 160px; overflow: auto;">
+											<option value="Bagerhat">Bagerhat</option>
+											<option value="Bandarban">Bandarban</option>
+											<option value="Barguna">Barguna</option>
+											<option value="Barisal">Barisal</option>
+											<option value="Bhola">Bhola</option>
+											<option value="Bogra">Bogra</option>
+											<option value="Brahmanbaria">Brahmanbaria</option>
+											<option value="Chandpur">Chandpur</option>
+											<option value="Chapai Nawabganj">Chapai Nawabganj</option>
+											<option value="Chittagong">Chittagong</option>
+											<option value="Chuadanga">Chuadanga</option>
+											<option value="Comilla">Comilla</option>
+											<option value="Cox's Bazar">Cox's Bazar</option>
+											<option value="Dhaka">Dhaka</option>
+											<option value="Dinajpur">Dinajpur</option>
+											<option value="Faridpur">Faridpur</option>
+											<option value="Feni">Feni</option>
+											<option value="Gaibandha">Gaibandha</option>
+											<option value="Gazipur">Gazipur</option>
+											<option value="Gopalganj">Gopalganj</option>
+											<option value="Habiganj">Habiganj</option>
+											<option value="Jamalpur">Jamalpur</option>
+											<option value="Jessore">Jessore</option>
+											<option value="Jhalokathi">Jhalokathi</option>
+											<option value="Jhenaidah">Jhenaidah</option>
+											<option value="Joypurhat">Joypurhat</option>
+											<option value="Khagrachari">Khagrachari</option>
+											<option value="Khulna">Khulna</option>
+											<option value="Kishoreganj">Kishoreganj</option>
+											<option value="Kurigram">Kurigram</option>
+											<option value="Kushtia">Kushtia</option>
+											<option value="Laksmipur">Laksmipur</option>
+											<option value="Lalmonirhat">Lalmonirhat</option>
+											<option value="Madaripur">Madaripur</option>
+											<option value="Magura">Magura</option>
+											<option value="Manikganj">Manikganj</option>
+											<option value="Meherpur">Meherpur</option>
+											<option value="Moulvibazar">Moulvibazar</option>
+											<option value="Munshiganj">Munshiganj</option>
+											<option value="Mymensingh">Mymensingh</option>
+											<option value="Naogaon">Naogaon</option>
+											<option value="Narail">Narail</option>
+											<option value="Narayanganj">Narayanganj</option>
+											<option value="Natore">Natore</option>
+											<option value="Netrokona">Netrokona</option>
+											<option value="Nilphamari">Nilphamari</option>
+											<option value="Noakhali">Noakhali</option>
+											<option value="Norshingdi">Norshingdi</option>
+											<option value="Pabna">Pabna</option>
+											<option value="Panchagarh">Panchagarh</option>
+											<option value="Patuakhali">Patuakhali</option>
+											<option value="Perojpur">Perojpur</option>
+											<option value="Rajbari">Rajbari</option>
+											<option value="Rajshahi">Rajshahi</option>
+											<option value="Rangamati">Rangamati</option>
+											<option value="Rangpur">Rangpur</option>
+											<option value="Satkhira">Satkhira</option>
+											<option value="Shariatpur">Shariatpur</option>
+											<option value="Sherpur">Sherpur</option>
+											<option value="Sirajganj">Sirajganj</option>
+											<option value="Sunamganj">Sunamganj</option>
+											<option value="Sylhet">Sylhet</option>
+											<option value="Tangail">Tangail</option>
+											<option value="Thakurgaon">Thakurgaon</option>
+
+										</select>
+									</div>
+									</form>
+								<div class="col-6 form-group pl-1">
+									<label>Area</label>
+									<input type="text" class="form-control"  id="ShippingArea" name="ShippingArea" placeholder="Area">
+								</div>
+							</div>
+							<!-- /row -->
+							
+							
+							</div>
+							<!-- /other_addr_c -->
+							<hr>
+						</div>
+						<!-- /tab_1 -->
+					 
+						<!-- /tab_2 -->
+					</div>
+					</div>
+					<!-- /step -->
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="step middle payments">
+						<h3>2. Payment and Shipping</h3>
+							<ul>
+								<div class="form-check form-check-inline">
+									  <input class="form-check-input" type="radio" name="PaymentMode" id="flexRadioDefault1" value="Cash On Delivery" checked>
+									  <label class="form-check-label" for="flexRadioDefault1">
+										Cash On Delivery
+									  </label>
+									</div>
+									<hr/>
+								<div class="form-check form-check-inline">
+									<label class="form-check-label" for="flexRadioDefault2">
+									Pay With
+									</label>
+									<span><img src="~/img/Bkash.svg" width="15%"/></span>
+									<input class="form-check-input" type="radio" name="PaymentMode" id="flexRadioDefault2" value="Bkash" >
+									
+								</div>
+								<hr/>
+								<div class="form-check form-check-inline">
+									<label class="form-check-label" for="flexRadioDefault3">
+									Pay with Cards
+
+									</label>
+									<span><img src="~/img/cardsOnly.png" width="30%"/></span>
+									<input class="form-check-input" type="radio" name="PaymentMode" id="flexRadioDefault3" value="Bank" disabled>
+									
+								</div>
+								<hr/>
+
+								@*<li>
+									<label class="container_radio">Cash on delivery<a href="#0" class="info" data-bs-toggle="modal" data-bs-target="#CashOnDelivary_method"></a>
+										<input type="radio" name="CashOnDelivery">
+										<span class="checkmark"></span>
+									</label>
+								</li>
+								<li>
+									<label class="container_radio"><a href="#0" class="info" data-bs-toggle="modal" data-bs-target="#Comming_Soon_Payment_method"></a>
+										<span><img src="~/img/Bkash.svg" width="15%"/></span>
+										<input type="radio" name="Bkash"  >
+										<span class="checkmark"></span>
+									</label>
+								</li>*@
+								@*<li>
+									<label class="container_radio"><a href="#0" class="info" data-bs-toggle="modal" data-bs-target="#payments_method"></a>
+										<span><img src="~/img/Rocket.svg" width="15%"/></span>
+										<input type="radio" name="payment">
+										<span class="checkmark"></span>
+									</label>
+								</li>
+								<li>
+									<label class="container_radio"><a href="#0" class="info" data-bs-toggle="modal" data-bs-target="#payments_method"></a>
+										<span><img src="~/img/Nagad.svg" width="15%"/></span>
+										<input type="radio" name="payment">
+										<span class="checkmark"></span>
+									</label>
+								</li>*@
+								
+								
+							</ul>
+							
+							<h6 class="pb-2">Shipping Method</h6>
+							
+						
+						<ul>
+								<li>
+									<label class="container_radio">Standard shipping <a href="#0" class="info" data-bs-toggle="modal" data-bs-target="#Standard_shipping_method"></a>
+										<input type="radio" name="shipping" checked>
+										<span class="checkmark"></span>
+									</label>
+								</li>
+								<li>
+									<label class="container_radio">Express shipping (Not Availabe now )<a href="#0" class="info" data-bs-toggle="modal" data-bs-target="#Comming_Soon_Shipping_method"></a>
+										<input type="radio" name="shipping" disabled>
+										<span class="checkmark" ></span>
+									</label>
+								</li>
+								
+							</ul>
+							<h6 class="pb-2">Apply Promo Code</h6>
+							<div class="row g-2">
+								
+										<div class="col-md-6"><input type="text" name="coupon-code" value="" placeholder="Promo code" class="form-control"></div>
+										<div class="col-md-6"><button type="button" class="btn_1 outline full-width">Apply Coupon</button></div>
+									</div>
+						
+					</div>
+					<!-- /step -->
+					
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="step last">
+						<h3 >3. Order Summary</h3>
+					<div class="box_general summary">
+						<ul>
+
+						@if ( ViewBag.ItemCount<1)
+						{
+							<li class="clearfix"><em>No Product in Cart</em>  <span></span></li>
+							
+						}
+						@foreach(Cart cart in Model.CartDetails)
+						{
+							<li class="clearfix"><em>@cart.Qty X @cart.ProductName </em>  <span>৳ @cart.Subtotal</span></li>
+						}
+						
+						
+						</ul>
+						<ul>
+							<li class="clearfix"><em><strong>Subtotal</strong></em>  <span>৳ @ViewBag.Subtotal</span></li>
+							<li class="clearfix"><em><strong>Total Weight </strong></em> <span>@ViewBag.TotalWeight KG</span></li>
+							<li class="clearfix"><em><strong>Shipping Charge</strong></em><br/>All Over BD First 1 kg 80 TK<br/> 30 TK for next every kg  <span>৳ @ViewBag.Shipping</span></li>
+							
+						</ul>
+						<div class="total clearfix">TOTAL <span>৳ @ViewBag.Grandtotal</span></div>
+						<div class="form-group">
+								<label class="container_check">I have read and agreed  all the <a asp-controller="Home" asp-action="TermsAndConditions">Terms &amp; Conditions </a>, <a asp-controller="Home" asp-action="TermsAndConditions">Return &amp; Refund Policies</a>
+								  <input type="checkbox" onload="validate()" onchange="validate()" id="TncAgreed"  required>
+								  <span class="checkmark"></span>
+								</label>
+							</div>
+
+
+							<script type="text/javascript">
+
+									
+									function validate(){
+										var remember = document.getElementById('ShippingAddress');
+										if (remember.checked)
+										{
+											document.getElementById("ShippingFullName").required = true;
+											document.getElementById("ShippingPhoneNumber").required = true;
+											document.getElementById("ShippingFullAddress").required = true;
+											document.getElementById("ShippingArea").required = true;
+										}
+										else
+										{
+											document.getElementById("ShippingFullName").required = false;
+											document.getElementById("ShippingPhoneNumber").required = false;
+											document.getElementById("ShippingFullAddress").required = false;
+											document.getElementById("ShippingArea").required = false;
+										}
+									}
+							</script>
+						
+						
+						<input type="submit" value="Confirm and Pay" asp-controller="CheckOut" asp-action="ConfirmOrder" class="btn_1 full-width">
+					</div>
+					<!-- /box_general -->
+					</div>
+					<!-- /step -->
+				</div>
+			</div>
+	</form>
+			<!-- /row -->
+		</div>
