@@ -1,49 +1,810 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CropsHaatEcom_New</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/CropsHaatEcom_New.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CropsHaatEcom_New</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-YZP0CMWHPP"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - CropsHaatEcom_New - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+		gtag('config', 'G-YZP0CMWHPP');
+	</script>
+	<script src="https://kit.fontawesome.com/45893b2d1f.js" crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="Crops Haat">
+	<title>@ViewData["Title"] - Crops Haat</title>
+
+	<link rel="shortcut icon" href="~/img/CropsHaatIconRounded.png" type="~/image/x-icon">
+	<link rel="apple-touch-icon" type="~/image/x-icon" href="~/img/apple-touch-icon-57x57-precomposed.png">
+	<link rel="apple-touch-icon" type="~/image/x-icon" sizes="72x72" href="/img/CropsHaatIconRounded.png">
+	<link rel="apple-touch-icon" type="~/image/x-icon" sizes="114x114" href="/img/CropsHaatIconRounded.png">
+	<link rel="apple-touch-icon" type="~/image/x-icon" sizes="144x144" href="/img/CropsHaatIconRounded.png">
+
+	<!-- GOOGLE WEB FONT -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<!-- BASE CSS -->
+	<link href="~/css/bootstrap.custom.min.css" rel="stylesheet">
+
+	<link href="~/css/style.css" rel="stylesheet">
+
+	<!-- SPECIFIC CSS -->
+	<link href="~/css/home_1.css" rel="stylesheet">
+	<link href="~/css/product_page.css" rel="stylesheet">
+	<link href="~/css/cart.css" rel="stylesheet">
+	<link href="~/css/error_track.css" rel="stylesheet">
+	<link href="~/css/checkout.css" rel="stylesheet">
+	<link href="~/css/listing.css" rel="stylesheet">
+	<link href="~/css/account.css" rel="stylesheet">
+	<link href="~/css/faq.css" rel="stylesheet">
+
+	<!-- YOUR CUSTOM CSS -->
+	<link href="~/css/custom.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="~/sweetalert2/dist/sweetalert2.min.css">
+
+
+
+
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+		  rel="stylesheet" />
+
+	<!-- Icons. Uncomment required icon fonts -->
+	<link rel="stylesheet" href="~/assets/vendor/fonts/boxicons.css" />
+
+	<!-- Core CSS -->
+	<link rel="stylesheet" href="~/assets/vendor/css/core.css" class="template-customizer-core-css" />
+	<link rel="stylesheet" href="~/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+	<link rel="stylesheet" href="~/assets/css/demo.css" />
+
+	<!-- Vendors CSS -->
+	<link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+	<!-- Page CSS -->
+	<!-- Page -->
+	<link rel="stylesheet" href="~/assets/vendor/css/pages/page-auth.css" />
+	<!-- Helpers -->
+	<script src="~/assets/vendor/js/helpers.js"></script>
+
+	<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+	<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+	<script src="~/assets/js/config.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body onload="validate()">
+	<!-- Messenger Chat Plugin Code -->
+	<div id="fb-root"></div>
+
+	<!-- Your Chat Plugin code -->
+	<div id="fb-customer-chat" class="fb-customerchat">
+	</div>
+
+	<script>
+		var chatbox = document.getElementById('fb-customer-chat');
+		chatbox.setAttribute("page_id", "108623215040377");
+		chatbox.setAttribute("attribution", "biz_inbox");
+	</script>
+
+	<!-- Your SDK code -->
+	<script>
+		window.fbAsyncInit = function () {
+
+
+			FB.init({
+				xfbml: true,
+				version: 'v13.0'
+			});
+		};
+
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+	<div id="page">
+
+		<header class="version_2">
+			<div class="layer"></div><!-- Mobile menu overlay mask -->
+			<div class="main_header">
+				<div class="container">
+					<div class="row small-gutters">
+						<div class="col-xl-3 col-lg-3 d-lg-flex align-items-center">
+							<div id="logo">
+								<a href="~/"><img src="~/img/CropsHaatLogo.svg" alt="" width="230px" height:auto></a>
+							</div>
+						</div>
+						<nav class="col-xl-6 col-lg-7">
+							<a class="open_close" href="javascript:void(0);">
+								<div class="hamburger hamburger--spin">
+									<div class="hamburger-box">
+										<div class="hamburger-inner"></div>
+									</div>
+								</div>
+							</a>
+							<!-- Mobile menu button -->
+							<div class="main-menu">
+								<div id="header_menu">
+									<a href="index.html"><img src="~/img/Artboard 1.svg" alt="" width="230px" height:auto></a>
+									<a href="#" class="open_close" id="close_in"><i class="ti-close"></i></a>
+								</div>
+								<ul>
+
+									<li>
+										<a href="~/">Home</a>
+
+									</li>
+									<li class="megamenu submenu">
+										<a class="show-submenu-mega">Products</a>
+										<div class="menu-wrapper">
+											<div class="row small-gutters">
+												<div class="col-lg-3">
+													<h3>Food Crops</h3>
+													<ul>
+														@foreach (var FoodCrops in ViewBag.FoodCrops)
+														{
+															<li><a href="@Url.Action("index","Products",new{SearchKey=@FoodCrops.SubCategory})">@FoodCrops.SubCategory</a></li>
+														}
+
+													</ul>
+												</div>
+												<div class="col-lg-3">
+													<h3>Cash Crops</h3>
+													<ul>
+														@foreach (var CashCrops in ViewBag.CashCrops)
+														{
+															<li><a href="@Url.Action("index","Products",new{SearchKey=@CashCrops.SubCategory})">@CashCrops.SubCategory</a></li>
+														}
+													</ul>
+												</div>
+												<div class="col-lg-3">
+													<h3>Processed Crops</h3>
+													<ul>
+
+
+														@foreach (var ProcessedCrops in ViewBag.ProcessedCrops)
+														{
+															<li><a href="@Url.Action("index","Products",new{SearchKey=@ProcessedCrops.SubCategory})">@ProcessedCrops.SubCategory</a></li>
+														}
+													</ul>
+												</div>
+												<div class="col-lg-3 d-xl-block d-lg-block d-md-none d-sm-none d-none">
+													<div class="banner_menu">
+														<a href="#0">
+															<img src="~/img/DropdownTmimg.png" width="400" height="550" alt="" class="img-fluid lazy">
+														</a>
+													</div>
+												</div>
+											</div>
+											<!-- /row -->
+										</div>
+										<!-- /menu-wrapper -->
+									</li>
+
+									<li>
+										<a href="~/Account/Trackorder">Track Your Order </a>
+									</li>
+
+									<li class="submenu">
+										<a href="javascript:void(0);" class="show-submenu">Learn More</a>
+										<ul>
+
+											<li><a asp-controller="Home" asp-action="AboutUs">About Us</a></li>
+											<li><a asp-controller="Home" asp-action="TermsAndConditions">Terms and conditions</a></li>
+											<li><a asp-controller="Home" asp-action="ReturnandRefundPolicy">Return and Refund Policy</a></li>
+
+
+										</ul>
+									</li>
+
+									<li class="submenu">
+										<a href="javascript:void(0);" class="show-submenu">Careers</a>
+										<ul>
+
+											<li><a asp-controller="Home" asp-action="Delegates">Join As Delegates</a></li>
+											<li><a asp-controller="Home" asp-action="Franchise">Join As Felegates</a></li>
+
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<!--/main-menu -->
+						</nav>
+						<div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-end">
+							<a class="phone_top" href="tel:+8809611677486"><strong><span>Need Help?</span>09611 677 486</strong></a>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+			</div>
+			<!-- /main_header -->
+
+			<div class="main_nav Sticky">
+				<div class="container">
+					<div class="row small-gutters">
+						<div class="col-xl-3 col-lg-3 col-md-3">
+							<nav class="categories">
+								<ul class="clearfix">
+									<li>
+										<span>
+											<a href="#">
+												<span class="hamburger hamburger--spin">
+													<span class="hamburger-box">
+														<span class="hamburger-inner"></span>
+													</span>
+												</span>
+												Categories
+											</a>
+										</span>
+										<div id="menu">
+											<ul>
+												<li>
+													<span><a href="@Url.Action("index","Products",new{SearchKey="Food Crops"})">Food Crops</a></span>
+
+												</li>
+												<li>
+													<span><a href="@Url.Action("index","Products",new{SearchKey="Cash Crops"})">Cash Crops</a></span>
+
+												</li>
+												<li>
+													<span><a href="@Url.Action("index","Products",new{SearchKey="Processed Crops"})">Processed Crops</a></span>
+
+												</li>
+
+
+											</ul>
+										</div>
+									</li>
+								</ul>
+							</nav>
+						</div>
+						<div class="col-xl-6 col-lg-7 col-md-6 d-none d-md-block">
+							<div class="custom-search-input">
+								<!--Desaktop Liv-->
+								<form role="form" method="post">
+
+									<input type="text" id="livesearchtags" name="livesearchtags" placeholder="Search over 1061 products SKU" autocomplete="off" required>
+									<button type="submit" asp-controller="Products" asp-action="index"><i class="header-icon_search_custom"></i></button>
+
+								</form>
+								<div class="list-group" id="result" style="color:white">
+								</div>
+
+
+							</div>
+
+
+
+						</div>
+
+
+						<div class="col-xl-3 col-lg-2 col-md-3">
+							<ul class="top_tools">
+								<li>
+									<div class="dropdown dropdown-cart">
+										<a asp-controller="Checkout" asp-action="Cart" class="cart_bt"><strong>@ViewData["CartCount"]</strong></a>
+										<div class="dropdown-menu">
+
+											<ul>
+
+												@foreach (var cart in ViewBag.Cart)
+												{
+
+													<li>
+														<a href="~/products/details/@cart.ProductId">
+															<figure><img src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@cart.ProductId+Bowl.webp" alt="@cart.ProductName" width="50" height="50" class="lazy"></figure>
+															<strong><span>@cart.Qty X @cart.ProductName</span>৳ @cart.Subtotal</strong>
+														</a>
+														@*<a href="#0" class="action"><i class="ti-trash"></i></a>*@
+													</li>
+
+												}
+
+
+											</ul>
+
+											<div class="total_drop">
+												@if (ViewBag.ItemCount < 1)
+												{
+													<a class="btn_1 outline" disable>No Item in Cart</a>
+
+
+												}
+												@if (ViewBag.ItemCount > 0)
+												{
+													<div class="clearfix"><strong>Total</strong><span>৳ @ViewBag.SubTotal</span></div>
+													<a href="~/Checkout/Cart" class="btn_1 outline">View Cart</a>
+
+													<a href="~/Checkout/Checkout" class="btn_1">Checkout</a>
+
+												}
+
+											</div>
+
+
+
+
+
+
+
+										</div>
+									</div>
+									<!-- /dropdown-cart-->
+								</li>
+								<li>
+
+								</li>
+								<li>
+									<div class="dropdown dropdown-access">
+										<a asp-controller="Account" asp-action="Login" class="access_link"><span>Account</span></a>
+
+										<div class="dropdown-menu">
+											@{
+												if (ViewBag.UserID == null)
+												{
+													<a asp-controller="Account" asp-action="Login" class="btn_1">Sign In or Sign Up</a>
+												}
+
+
+											}
+
+											<ul>
+												@{
+													if (ViewBag.UserID != null)
+													{
+														<li>
+															<a asp-controller="Account" asp-action="index"><i class="ti-user"></i>Welcome <b>@ViewBag.UserFullName</b> <br /> <small>@ViewBag.UserID</small> </a>
+														</li>
+
+
+
+
+
+													}
+
+
+												}
+												<li>
+													<a asp-controller="Account" asp-action="Trackorder"><i class="ti-truck"></i>Track your Order</a>
+												</li>
+												@*	<li>
+												<a href="account.html"><i class="ti-package"></i>My Orders</a>
+												</li>
+												<li>
+												<a href="account.html"><i class="ti-user"></i>My Profile</a>
+												</li>*@
+
+											</ul>
+										</div>
+									</div>
+									<!-- /dropdown-access-->
+								</li>
+								<li>
+									<a href="javascript:void(0);" class="btn_search_mob"><span>Search</span></a>
+								</li>
+								<li>
+									<a href="#menu" class="btn_cat_mob">
+										<div class="hamburger hamburger--spin" id="hamburger">
+											<div class="hamburger-box">
+												<div class="hamburger-inner"></div>
+											</div>
+										</div>
+										Categories
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+
+
+				<div class="search_mob_wp">
+					<form role="form" method="post">
+						<input type="text" name="SearchKey" class="form-control" placeholder="Search over 1061 products SKU" required>
+						<input type="submit" asp-controller="Products" asp-action="index" class="btn_1 full-width" value="Search">
+					</form>
+
+				</div>
+				<!-- /search_mobile -->
+			</div>
+			<!-- /main_nav -->
+		</header>
+		<!-- /header -->
+		<main role="main">
+
+			@RenderBody()
+
+			@if (TempData["success"] != null)
+			{
+				<script type="text/javascript">
+					window.onload = function () {
+						swal('@TempData["Header"]', '@TempData["success"]', "success");
+					};
+				</script>
+			}
+
+			@if (TempData["error"] != null)
+			{
+				<script type="text/javascript">
+					window.onload = function () {
+						swal('@TempData["Header"]', '@TempData["error"]', "error");
+					};
+				</script>
+			}
+
+			@if (TempData["info"] != null)
+			{
+				<script type="text/javascript">
+					window.onload = function () {
+						swal('@TempData["Header"]', '@TempData["info"]', "info");
+					};
+				</script>
+			}
+
+			@if (TempData["warning"] != null)
+			{
+				<script type="text/javascript">
+					window.onload = function () {
+						swal('@TempData["Header"]', '@TempData["warning"]', "warning");
+					};
+				</script>
+			}
+
+
+
+
+		</main>
+
+		<footer class="revealed">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-6">
+						<h3 data-bs-target="#collapse_1">Quick Links</h3>
+						<div class="collapse dont-collapse-sm links" id="collapse_1">
+							<ul>
+								<li><a asp-controller="Home" asp-action="AboutUs">About Us</a></li>
+								<li><a asp-controller="Home" asp-action="TermsAndConditions">Terms and conditions</a></li>
+								<li><a asp-controller="Home" asp-action="ReturnandRefundPolicy">Return and Refund Policy</a></li>
+								<li><a asp-controller="Home" asp-action="Sandbox">Sandbox</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<h3 data-bs-target="#collapse_2">Categories</h3>
+						<div class="collapse dont-collapse-sm links" id="collapse_2">
+							<ul>
+								<li>
+									<span><a href="@Url.Action("index","Products",new{SearchKey="Food Crops"})">Food Crops</a></span>
+
+								</li>
+								<li>
+									<span><a href="@Url.Action("index","Products",new{SearchKey="Cash Crops"})">Cash Crops</a></span>
+
+								</li>
+								<li>
+									<span><a href="@Url.Action("index","Products",new{SearchKey="Processed Crops"})">Processed Crops</a></span>
+
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<h3 data-bs-target="#collapse_3">Contacts</h3>
+						<div class="collapse dont-collapse-sm contacts" id="collapse_3">
+							<ul>
+								<li><i class="ti-home"></i>43/A Ashrafabad Main Road<br>Kamrangirchar (DSCC) Old Dhaka 1211</li>
+								<li><i class="ti-headphone-alt"></i>09611 677 486</li>
+								<li><i class="ti-email"></i><a href="#0">info@cropshaat.com</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<h3 data-bs-target="#collapse_4">Keep in touch</h3>
+						<div class="collapse dont-collapse-sm" id="collapse_4">
+
+							<div class="follow_us">
+								<h5>Follow Us</h5>
+								<ul>
+									<li><a href="#0"><img src="~/img/twitter_icon.svg" alt="" class="lazy"></a></li>
+									<li><a href="#0"><img src="~/img/facebook_icon.svg" alt="" class="lazy"></a></li>
+									<li><a href="#0"><img src="~/img/instagram_icon.svg" alt="" class="lazy"></a></li>
+									<li><a href="#0"><img src="~/img/youtube_icon.svg" alt="" class="lazy"></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /row-->
+				<hr>
+				<div class="row add_bottom_25">
+					<div class="col-lg-6">
+						<ul class="footer-selector clearfix">
+							<li>
+								<div class="styled-select lang-selector">
+									<select>
+										<option value="English" selected>English</option>
+
+									</select>
+								</div>
+							</li>
+							<li>
+								<div class="styled-select currency-selector">
+									<select>
+										<option value="US Dollars" selected>BDT</option>
+
+									</select>
+								</div>
+							</li>
+							<li><img style="width:300px;height:auto;" src="~/img/AllPaymentModeswhite.svg" /></li>
+
+						</ul>
+					</div>
+					<div class="col-lg-6">
+						<ul class="additional_links">
+
+							<li><span>© 2021 CropsHaat</span></li>
+							<li><span>Developed By: Neurochip</span></li>
+							<li><span>TRAD No: TRAD/DSCC/031820/2021</span></li>
+							<li><span>UBID Tracking No: 101</span></li>
+							<li><span>1.0.0.5</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!--/footer-->
+	</div>
+	<!-- page -->
+
+	<div id="toTop"></div><!-- Back to top button -->
+	<!--Cash on delivary method -->
+	<div class="modal fade" id="CashOnDelivary_method" tabindex="-1" role="dialog" aria-labelledby="payments_method_title" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="payments_method_title">Cash On Delivary</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>In this Payment Method, You Receive the Product And than Pay.</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--Standard shipping method -->
+	<div class="modal fade" id="Standard_shipping_method" tabindex="-1" role="dialog" aria-labelledby="payments_method_title" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="payments_method_title">Standard Shipping</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>In Dhaka- Product will deliver ASAP (1-3 Days)*</p>
+					<p>Sub Dhaka- Product will deliver (1-3 Days)*</p>
+					<p>OutSide Dhaka- Product will deliver (2-7 Days)*</p>
+					<p><b>*Subject Uncertainty</b></p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--Standard shipping method -->
+	<div class="modal fade" id="Job_discriptions" tabindex="-1" role="dialog" aria-labelledby="payments_method_title" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<H3>Delegates Job descriptions</H3>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<p><strong><u>Job responsibility by delegates</u></strong></p>
+					<ol>
+						<li>Create account of Individuals user at least one in a day</li>
+						<li>Create account of farmers at least one in a day</li>
+						<li>Create account of retail shops</li>
+						<li>Sales marketing to the retail shop</li>
+						<li>Sales marketing to the Individuals user</li>
+						<li>Sales marketing to the occasional events</li>
+						<li>Request of local new product</li>
+						<li>Confirming local crops quality control (QC)</li>
+						<li>Purchase of local crops and shipping to the central warehouse</li>
+					</ol>
+					<p>N.B: Delegates is bound to take all necessary steps to ensure the Crops Haat interest.</p>
+					<p><strong><u>Benefits of delegates:</u></strong></p>
+					<ol>
+						<li>If achieve target amount 50K in a month delegates will get based salaries amount 7000.00</li>
+						<li>If achieve below target amount 50k in a month delegates will get only 7% on their actual sales amount, rest target amount will be added with the following month target</li>
+						<li>If achieve above target amount of 50k in a month delegates will get 15% profit on their excess amount of actual sales</li>
+					</ol>
+					<p><strong><u>Payment Policies for delegates:</u></strong></p>
+					<ol>
+						<li>Based salaries paid monthly</li>
+						<li>7% Sales commission paid monthly</li>
+						<li>Profit can be withdrawn quarterly (4 times in a year)</li>
+						<li>All Financial transection through bKash (within BDT 50K) and above fund will be provide by bank cheque.</li>
+					</ol>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<!-- Comming_Soon_Shipping_method -->
+	<div class="modal fade" id="Comming_Soon_Shipping_method" tabindex="-1" role="dialog" aria-labelledby="payments_method_title" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="payments_method_title">Coming Soon</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>We are Not Offering this Shipping Method Now</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Comming_Soon_Payment_method -->
+	<div class="modal fade" id="Comming_Soon_Payment_method" tabindex="-1" role="dialog" aria-labelledby="payments_method_title" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="payments_method_title">Coming Soon</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>We are Not Offering this Payment Method Now</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- COMMON SCRIPTS -->
+	<script src="~/js/common_scripts.min.js"></script>
+	<script src="~/js/main.js"></script>
+	<script src="https://kit.fontawesome.com/45893b2d1f.js" crossorigin="anonymous"></script>
+	<!-- SPECIFIC SCRIPTS -->
+	<script src="~/js/carousel-home.min.js"></script>
+	<script src="~/js/carousel_with_thumbs.js"></script>
+	<script src="~/js/sticky_sidebar.min.js"></script>
+	<script src="~/js/specific_listing.js"></script>
+
+	<script src="~/js/sticky_sidebar.min.js"></script>
+	<script src="~/js/specific_listing.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		// Other address Panel
+		$('#other_addr input').on("change", function () {
+			if (this.checked)
+				$('#other_addr_c').fadeIn('fast');
+			else
+				$('#other_addr_c').fadeOut('fast');
+		});
+	</script>
+
+	<script>
+		// Other address Panel
+		$('#other_addr input').on("change", function () {
+			if (this.checked)
+				$('#other_addr_c').fadeIn('fast');
+			else
+				$('#other_addr_c').fadeOut('fast');
+		});
+	</script>
+	<script>
+		// Client type Panel
+		$('input[name="client_type"]').on("click", function () {
+			var inputValue = $(this).attr("value");
+			var targetBox = $("." + inputValue);
+			$(".box").not(targetBox).hide();
+			$(targetBox).show();
+		});
+	</script>
+
+
+
+	<script>
+
+		//Live Search AJAX
+		document.getElementById('livesearchtags').addEventListener('keyup', function (e) {
+			//Run LiveSearch on ever key up
+			LiveSearch()
+		});
+
+
+		function LiveSearch() {
+			//Get the input value
+			let value = document.getElementById('livesearchtags').value
+
+			$.ajax({
+				type: "POST",
+				// You can use the absolute url eg www.site.com/MyControllerName/LiveTagSearch or the relative path live below
+				url: "/Home/LiveTagSearch",
+				// Attach the value to a parameter called search
+				data: { SearchKey: value },
+				datatype: "html",
+				success: function (data) {
+					// Insert the returned search results html into the result element
+					$('#result').html(data);
+				}
+			});
+		}
+
+
+	</script>
+	<!-- Core JS -->
+	<!-- build:js assets/vendor/js/core.js -->
+	<script src="~/assets/vendor/libs/jquery/jquery.js"></script>
+	<script src="~/assets/vendor/libs/popper/popper.js"></script>
+	<script src="~/assets/vendor/js/bootstrap.js"></script>
+	<script src="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+	<script src="~/assets/js/ui-modals.js"></script>
+	<script src="~/assets/vendor/js/menu.js"></script>
+	<!-- endbuild -->
+	<!-- Vendors JS -->
+	<!-- Main JS -->
+	<script src="~/assets/js/main.js"></script>
+
+	<!-- Page JS -->
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

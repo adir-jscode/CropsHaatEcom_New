@@ -1,0 +1,22 @@
+
+{
+    "region" : "ap-southeast-1",
+    "configuration" : "Release",
+    "framework"     : "net6.0",
+    "self-contained" : false,
+    "application"    : "CropsHaatEcomNew",
+    "environment"    : "CropsHaatEcomNew",
+    "enable-xray"    : false,
+    "enhanced-health-type" : "basic",
+    "additional-options"   : "",
+    "solution-stack"       : "64bit Amazon Linux 2 v2.5.4 running .NET Core",
+    "environment-type"     : "LoadBalanced",
+    "loadbalancer-type"    : "application",
+    "cname"                : "cropshaatecomnew",
+    "instance-type"        : "t2.micro",
+    "key-pair"             : "Key_Pair",
+    "health-check-url"     : "/",
+    "instance-profile"     : "aws-elasticbeanstalk-ec2-role",
+    "service-role"         : "aws-elasticbeanstalk-service-role",
+    "proxy-server"         : "nginx"
+}
