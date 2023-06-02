@@ -1,0 +1,446 @@
+﻿@model dynamic
+
+@foreach(ProductDetailsModel ProductDetails in Model.ProductDetails){
+	ViewData["Title"] = @ProductDetails.ProductName;
+	<!-- Details Products -->
+ <div class="container margin_30">
+	       
+	        <div class="row">
+	            <div class="col-md-6">
+	                <div class="all">
+
+
+						<div
+                    id="carouselExample-cf"
+                    class="carousel carousel-dark slide carousel-fade"
+                    data-bs-ride="carousel">
+                    
+                    <ol class="carousel-indicators">
+                      <li data-bs-target="#carouselExample-cf" data-bs-slide-to="0" class="active"></li>
+                      <li data-bs-target="#carouselExample-cf" data-bs-slide-to="1"></li>
+                      <li data-bs-target="#carouselExample-cf" data-bs-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img class="d-block w-100" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@ProductDetails.ProductId+Bowl.webp" alt="First slide" />
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@ProductDetails.ProductId+Stack.webp" alt="Second slide" />
+                        
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@ProductDetails.ProductId+Unit.webp" alt="Third slide" />
+                        
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExample-cf" role="button" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExample-cf" role="button" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </a>
+                  </div>
+	                    @*<div class="slider">
+	                        <div class="owl-carousel owl-theme main">
+							   <img  style="background-image" height="500" width="500"class="img-fluid" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@ProductDetails.ProductId+Bowl.webp"/>
+	                           <img  style="background-image" height="500" width="500"class="img-fluid" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@ProductDetails.ProductId+Stack.webp"/>
+							   <img  style="background-image" height="500" width="500" class="img-fluid" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@ProductDetails.ProductId+Unit.webp"/>
+							   
+	                        </div>
+	                        <div class="left nonl"><i class="ti-angle-left"></i></div>
+	                        <div class="right"><i class="ti-angle-right"></i></div>
+	                    </div>
+	                    <div class="slider-two">
+	                        <div class="owl-carousel owl-theme thumbs">
+								<img  style="background-image"height="500" width="500" class="item active" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@ProductDetails.ProductId+Bowl.webp"/>
+								<img  style="background-image" height="500" width="500"class="item" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@ProductDetails.ProductId+Stack.webp"/>
+								<img  style="background-image"height="500" width="500" class="item" src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@ProductDetails.ProductId+Unit.webp"/>
+								
+	                         
+	                            
+	                        </div>
+	                        <div class="left-t nonl-t"></div>
+	                        <div class="right-t"></div>
+	                    </div>*@
+	                </div>
+	            </div>
+	            <div class="col-md-6">
+	                <div class="breadcrumbs">
+	                    <ul>
+	                        <li><a href="~/">Home</a></li>
+	                        <li><a href="#">@ProductDetails.MainCatagory</a></li>
+							<li><a href="#">@ProductDetails.SubCatagory</a></li>
+							 
+	                        <li>@ProductDetails.ProductName</li>
+	                    </ul>
+	                </div>
+	                <!-- /page_header -->
+					
+					<form role="form" method="post" >
+	                <div class="prod_info">
+	                    <input type="hidden"  name="productID" value="@ProductDetails.ProductId">
+						<label name="productname" class="h1">@ProductDetails.ProductName</label> <br/>
+							 <input type="hidden"  name="name" value="@ProductDetails.ProductName">
+
+							 <!-- Review-->
+	                   
+							  <span class="rating">
+							
+								  @for(int i = 0; i < Convert.ToDecimal(@ProductDetails.ReviewRating); i++)
+							{
+								<i class="icon-star voted"></i>
+							}
+
+							 @for(int i = 0; i <(5- Convert.ToDecimal(@ProductDetails.ReviewRating)); i++)
+							{
+								<i class="icon-star"></i>
+							}
+								  <em>@ProductDetails.ReviewRating Rating</em>
+							
+							
+						</span>
+						 <!-- /Review-->
+
+	                    <p>
+							<input type="hidden"  name="Weight" value="@ProductDetails.SKUWeight">
+							<small>SKU: @ProductDetails.SKUWeight KG</small>
+							@if(@ProductDetails.IsAvailableStockl=="1"){
+								<span class="badge rounded-pill bg-success">Stock Available </span>
+							}
+							else
+							{
+								<span class="badge rounded-pill bg-secondary">Stock Unavailable </span>
+							}
+
+							<br>@ProductDetails.ShortDetails
+						</p>
+						@if(@ProductDetails.IsAvailableStockl=="1"){
+							<div class="prod_options">
+	                        <div class="row">
+	                        <div class="col-lg-5 col-md-6">
+	                            <div class="price_main"> 
+									<span class="old_price">Market Price ৳ @ProductDetails.MarketPrice</span>
+									<span class="percentage">-@ProductDetails.DiscountRatio %</span>  <br />
+									 <input type="hidden"  name="rate" value="@ProductDetails.HaatPrice">
+									<span class="new_price">Haat Price ৳ <span >@ProductDetails.HaatPrice</span> </span>
+								</div>
+	                        </div>
+	                        
+	                    </div> 
+							
+	                        <div class="row">
+	                            <label class="col-xl-5 col-lg-5 col-md-6 col-6"><strong>Quantity</strong></label>
+	                            <div class="col-xl-4 col-lg-5 col-md-6 col-6">
+	                                <div class="numbers-row">
+									
+	                                    <input type="text" value="1" id="quantity_1" class="qty2" name="Qty" >
+										
+	                                </div>
+									
+	                            </div>
+								<div class="col-lg-4 col-md-6">
+
+									 <input type="hidden"  name="StockRequest" value="0">
+	                            <div class="btn_add_to_cart"><button type="submit" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i>  Add To cart</button></div>
+								
+								<br/>
+
+										@if (ViewBag.SimilerProductCount > 0)
+										{
+											<div class="btn_add_to_cart">
+										  <button
+											type="button"
+											class="btn btn-outline-primary dropdown-toggle"
+											data-bs-toggle="dropdown"
+											aria-expanded="false"
+										  >
+											Other Qualities &amp; Quantities
+										  </button>
+										  <ul class="dropdown-menu">
+
+												@foreach(ProductsModel products in Model.SimillerProducts)
+												{
+													<li><a class="dropdown-item" href="~/products/details/@products.ProductId">@products.ProductName || ৳ @products.HaatPrice </a></li>
+												}
+												
+											
+											  
+										  </ul>
+										</div>
+										}
+										
+	                        </div>
+	                        </div>
+							 
+
+							
+	                        
+	                    </div>
+						}else{
+						<div class="prod_options">
+	                     <div class="row">
+	                        <div class="col-lg-5 col-md-6">
+	                            <div class="price_main"> 
+									<span class="old_price">Market Price ৳ @ProductDetails.MarketPrice</span>
+									<span class="percentage">@ProductDetails.DiscountRatio </span> <br />
+									 <input type="hidden"  name="rate" value="@ProductDetails.HaatPrice">
+									<span class="new_price">Haat Price ৳ <span >@ProductDetails.HaatPrice</span> </span>
+								</div>
+	                        </div>
+	                        
+	                    </div> 
+							
+	                        <div class="row">
+	                            <label class="col-xl-5 col-lg-5 col-md-6 col-6"><strong>Quantity</strong></label>
+	                            <div class="col-xl-4 col-lg-5 col-md-6 col-6">
+	                                <div class="numbers-row">
+									
+	                                    <input type="text" value="1" id="quantity_1" class="qty2" name="Qty" >
+										
+	                                </div>
+									
+	                            </div>
+								<div class="col-lg-4 col-md-6">
+									 <input type="hidden"  name="StockRequest" value="1">
+									 <div class="btn_add_to_cart"><button type="submit" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i>  Request For Stock</button></div>
+								
+									
+	                          
+								
+								<br/>
+	                        </div>
+	                        </div>
+							 
+
+							
+	                        
+	                    </div>
+						}
+	                    
+	                    
+	                </div>
+					</form>
+	                <!-- /prod_info -->
+	              
+	                <!-- /product_actions -->
+	            </div>
+	        </div>
+	        <!-- /row -->
+	    </div>
+	    <!-- /container -->
+
+
+	    
+	    <div class="tabs_product">
+	        <div class="container">
+	            <ul class="nav nav-tabs" role="tablist">
+	                <li class="nav-item">
+	                    <a id="tab-A" href="#pane-A" class="nav-link active" data-bs-toggle="tab" role="tab">Description</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a id="tab-B" href="#pane-B" class="nav-link" data-bs-toggle="tab" role="tab">Reviews</a>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+	    <!-- /tabs_product -->
+	    <div class="tab_content_wrapper">
+	        <div class="container">
+	            <div class="tab-content" role="tablist">
+	                <div id="pane-A" class="card tab-pane fade active show" role="tabpanel" aria-labelledby="tab-A">
+	                    <div class="card-header" role="tab" id="heading-A">
+	                        <h5 class="mb-0">
+	                            <a class="collapsed" data-bs-toggle="collapse" href="#collapse-A" aria-expanded="false" aria-controls="collapse-A">
+	                                Description
+	                            </a>
+	                        </h5>
+	                    </div>
+	                    <div id="collapse-A" class="collapse" role="tabpanel" aria-labelledby="heading-A">
+	                        <div class="card-body">
+	                            <div class="row justify-content-between">
+	                                <div class="col-lg-6">
+	                                    <h3>Details</h3>
+										@ProductDetails.Description
+									</div>
+	                                <div class="col-lg-5">
+	                                    <h3>SKU Details</h3>
+	                                    <div class="table-responsive">
+	                                        <table class="table table-sm table-striped">
+	                                            <tbody>
+	                                                <tr>
+	                                                    <td><strong>Color</strong></td>
+	                                                    <td>@ProductDetails.SKUColor</td>
+	                                                </tr>
+	                                                <tr>
+	                                                    <td><strong>Size</strong></td>
+	                                                    <td>@ProductDetails.SKUSize</td>
+	                                                </tr>
+	                                                <tr>
+	                                                    <td><strong>Weight</strong></td>
+	                                                    <td>@ProductDetails.SKUWeight</td>
+	                                                </tr>
+	                                                <tr>
+	                                                    <td><strong>Manufacturer</strong></td>
+	                                                    <td>@ProductDetails.Supplier</td>
+	                                                </tr>
+	                                            </tbody>
+	                                        </table>
+	                                    </div>
+	                                    <!-- /table-responsive -->
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <!-- /TAB A -->
+					 <!-- Review -->
+	                <div id="pane-B" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-B">
+	                    <div class="card-header" role="tab" id="heading-B">
+	                        <h5 class="mb-0">
+	                            <a class="collapsed" data-bs-toggle="collapse" href="#collapse-B" aria-expanded="false" aria-controls="collapse-B">
+	                                Reviews
+	                            </a>
+	                        </h5>
+	                    </div>
+	                    <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
+	                        <div class="card-body">
+
+							@foreach(ProductReviewModel productReviewModel in Model.ProductsReview)
+							{
+								 <div class="row justify-content-between">
+	                                <div class="col-lg-6">
+	                                    <div class="review_content">
+	                                        <div class="clearfix add_bottom_10">
+	                                            <span class="rating"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><em>5.0/5.0</em></span>
+	                                            <em>@productReviewModel.Time</em>
+	                                        </div>
+	                                        <h4>"@productReviewModel.Title"</h4>
+	                                        <p>@productReviewModel.Body</p>
+	                                    </div>
+	                                </div>
+	                               
+	                            </div>
+								
+							}
+
+	                           
+	                            <!-- /row -->
+
+	                            <!-- /row -->
+	                            <p class="text-end"><a href="leave-review.html" class="btn_1">Leave a review</a></p>
+	                        </div>
+	                        <!-- /card-body -->
+	                    </div>
+	                </div>
+	                <!-- /tab B -->
+					 <!-- Review -->
+	            </div>
+	            <!-- /tab-content -->
+	        </div>
+	        <!-- /container -->
+	    </div>
+	    <!-- /tab_content_wrapper -->
+
+		<!-- /Details Products -->
+
+}
+
+
+		 <!-- Related Products -->
+
+	    <div class="container margin_60_35">
+	        <div class="main_title">
+	            <h2>Related</h2>
+	            <span>Products</span>
+	            <p>Products in Same Category</p>
+	        </div>
+	        <div class="owl-carousel owl-theme products_carousel">
+	          @foreach(ProductsModel products in Model.RecomendedProducts){
+					<div class="item">
+					<div class="grid_item">
+						<span class="ribbon off">- @products.DiscountRatio %</span>
+						<figure>
+							
+							<a href=~/products/details/@products.ProductId>
+								<img   src="https://cropshaatimg.s3.ap-southeast-1.amazonaws.com/Products/@products.ProductId+Bowl.webp" alt="">
+							</a>
+						</figure>
+						 <!-- Review-->
+	                   
+							  <span class="rating">
+							
+								  @for(int i = 0; i < Convert.ToDecimal(@products.Rating); i++)
+							{
+								<i class="icon-star voted"></i>
+							}
+
+							 @for(int i = 0; i <(5- Convert.ToDecimal(@products.Rating)); i++)
+							{
+								<i class="icon-star"></i>
+							}
+								
+							
+							
+						</span>
+						 <!-- /Review-->
+						
+						<a href="~/products/details/@products.ProductId">
+							<h3>@products.ProductName</h3>
+						</a>
+						<br>
+						<h9> Origin : @products.Origin</h9>
+						<div class="price_box">
+							<span class="new_price">৳ @products.HaatPrice</span>
+							<span class="old_price">৳ @products.MarketPrice</span>
+						</div>
+						<ul>
+							<li><a href="~/products/details/@products.ProductId" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+						</ul>
+					</div>
+					<!-- /grid_item -->
+				</div>
+				}
+				
+	            <!-- /item -->
+	          
+	          
+	        </div>
+	        <!-- /products_carousel -->
+	    </div>
+	    <!-- /container -->
+
+	    <div class="feat">
+			<div class="container">
+				<ul>
+					<li>
+						<div class="box">
+							<i class="ti-gift"></i>
+							<div class="justify-content-center">
+								<h3>Free Shipping</h3>
+								<p>For all oders over BDT 2000</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="box">
+							<i class="ti-wallet"></i>
+							<div class="justify-content-center">
+								<h3>Secure Payment</h3>
+								<p>100% secure payment</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="box">
+							<i class="ti-headphone-alt"></i>
+							<div class="justify-content-center">
+								<h3>24/7 Support</h3>
+								<p>Online top support</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
